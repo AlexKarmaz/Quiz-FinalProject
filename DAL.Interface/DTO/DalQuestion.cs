@@ -12,6 +12,6 @@ namespace DAL.Interface.DTO
         public int Id { get; set; }
         public int ThemeId { get; set; }
         public string Text { get; set; }
-        public virtual ICollection<DalAnswer> Answers { get; set; }
+        public ICollection<DalAnswer> Answers { get; set; }
     }
 }

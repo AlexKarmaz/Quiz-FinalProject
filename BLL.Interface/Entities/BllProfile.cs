@@ -10,7 +10,7 @@ namespace BLL.Interface.Entities
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public virtual ICollection<BllTest> PassedTests { get; set; }
-        public virtual ICollection<BllTest> CreatedTests { get; set; }
+        public ICollection<BllTest> PassedTests { get; set; }
+        public ICollection<BllTest> CreatedTests { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace BLL.Interface.Entities
         public int Id { get; set; }
         public int ThemeId { get; set; }
         public string Text { get; set; }
-        public virtual ICollection<BllAnswer> Answers { get; set; }
+        public ICollection<BllAnswer> Answers { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace DAL.Interface.DTO
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public virtual ICollection<DalTest> PassedTests { get; set; }
-        public virtual ICollection<DalTest> CreatedTests { get; set; }
+        public ICollection<DalTest> PassedTests { get; set; }
+        public ICollection<DalTest> CreatedTests { get; set; }
     }
 }

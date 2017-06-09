@@ -13,6 +13,8 @@ namespace PLMVC
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
+                "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -20,12 +22,19 @@ namespace PLMVC
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/bootstrap-social.css",
+                       "~/Content/font-awesome.css",
+                       "~/Content/fonts.googleapis.css"
+                       ));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-min").Include(
+                      "~/Scripts/bootstrap.min.js"));
         }
     }
 }

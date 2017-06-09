@@ -1,6 +1,7 @@
 ﻿using BLL.Interface.Entities;
 using BLL.Interface.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Web.Security;
 
 namespace PLMVC.Providers
@@ -19,7 +20,7 @@ namespace PLMVC.Providers
 
         public MembershipUser CreateUser(string email, string name, string password)
         {
-            var profile = new BllProfile();
+            var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };
             var role = RoleService.GetOneByPredicate(r => r.Name == "User");
             
             var user = new BllUser()
@@ -27,9 +28,10 @@ namespace PLMVC.Providers
                 Email = email,
                 UserName = name,
                 Password = password,
-                Profile = profile
+                Profile = profile,
+                Roles = new List<BllRole>() { role}
             };
-            user.Roles.Add(role);
+          //  user.Roles.Add(role);
             UserService.Create(user);
             var membershipUser = GetUser(name, false);
             return membershipUser;

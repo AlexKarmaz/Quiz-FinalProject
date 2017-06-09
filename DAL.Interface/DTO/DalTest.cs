@@ -17,7 +17,7 @@ namespace DAL.Interface.DTO
         public DateTime DateCreation { get; set; }
         public int UserId { get; set; }
         public int ThemeId { get; set; }
-        public virtual ICollection<DalQuestion> Questions { get; set; }
-        public virtual ICollection<DalTestResult> TestResults { get; set; }
+        public ICollection<DalQuestion> Questions { get; set; }
+        public ICollection<DalTestResult> TestResults { get; set; }
     }
 }

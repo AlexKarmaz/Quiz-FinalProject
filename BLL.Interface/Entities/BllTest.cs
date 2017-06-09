@@ -16,7 +16,7 @@ namespace BLL.Interface.Entities
         public DateTime DateCreation { get; set; }
         public int UserId { get; set; }
         public int ThemeId { get; set; }
-        public virtual ICollection<BllQuestion> Questions { get; set; }
-        public virtual ICollection<BllTestResult> TestResults { get; set; }
+        public ICollection<BllQuestion> Questions { get; set; }
+        public ICollection<BllTestResult> TestResults { get; set; }
     }
 }

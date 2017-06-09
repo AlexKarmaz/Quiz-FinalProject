@@ -14,7 +14,7 @@ namespace DAL.Interface.DTO
         public string Password { get; set; }
         public string Email { get; set; }
         public int? ProfileId { get; set; }
-        public virtual DalProfile Profile { get; set; }
-        public virtual ICollection<DalRole> Roles { get; set; }
+        public DalProfile Profile { get; set; }
+        public ICollection<DalRole> Roles { get; set; }
     }
 }

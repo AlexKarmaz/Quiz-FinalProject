@@ -1,0 +1,43 @@
+﻿
+@model PLMVC.Models.User.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Register";
+}
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new Dictionary<string, object> { { "data-toggle", "validator" }, { "class", "col-md-8 col-sm-pull-2 col-md-offset-3" } }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+
+    <h3>Registration</h3>
+                <hr />
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter login" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserEmail)
+                    @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", @placeholder = "Enter Email" })
+                    @Html.ValidationMessageFor(m => m.UserEmail)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserPassword)
+                    @Html.TextBoxFor(m => m.UserPassword, new { @class = "form-control", @placeholder = "Enter password", @type = "password" })
+                    @Html.ValidationMessageFor(m => m.UserPassword)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PasswordConfirm)
+                    @Html.TextBoxFor(m => m.PasswordConfirm, new { @class = "form-control", @placeholder = "Confirm password", @type = "password" })
+                    @Html.ValidationMessageFor(m => m.PasswordConfirm)
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Sign Up</button>
+
+}
+
+

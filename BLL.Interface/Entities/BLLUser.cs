@@ -13,7 +13,7 @@ namespace BLL.Interface.Entities
         public string Password { get; set; }
         public string Email { get; set; }
         public int? ProfileId { get; set; }
-        public virtual BllProfile Profile { get; set; }
-        public virtual ICollection<BllRole> Roles { get; set; }
+        public BllProfile Profile { get; set; }
+        public ICollection<BllRole> Roles { get; set; }
     }
 }

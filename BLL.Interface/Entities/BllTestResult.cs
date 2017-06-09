@@ -14,6 +14,6 @@ namespace BLL.Interface.Entities
         public TimeSpan Runtime { get; set; }
         public DateTime DateComplete { get; set; }
         public bool IsSuccess { get; set; }
-        public virtual ICollection<bool> Results { get; set; }
+        public ICollection<bool> Results { get; set; }
     }
 }

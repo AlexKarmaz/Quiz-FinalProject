@@ -3,37 +3,44 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title Quiz</title>
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap-min")
+    @Scripts.Render("~/bundles/unobtrusive-ajax")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/customJS.js")
+    @Styles.Render("~/Content/css")
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.Partial("_Header")
+    <div class="container layout_container">
+        <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 pull-right container jumbotron">
+            <div id="loading" style="display:none;">
+                <h2>Loading...Please wait</h2>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div id="main_container">
+                @RenderBody()
             </div>
         </div>
+        <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 text-center">
+            advertising
+        </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+
+    <footer>
+        <div class="copyright">
+            <div class="copyright-content">&copy; @DateTime.Now.Year - by Alex Karmaz</div>
+            <div class="copyright-content">
+                <a href="http://twitter.com/alex_karmaz" target="_blank" class="btn btn-block btn-social-icon btn-twitter">
+                    <span class="fa fa-twitter"></span> 
+                </a>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -22,3 +22,25 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.login-dropdown {
+    margin-right: 40px;
+    font-size: 20px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright-content {
+    margin: 0 50px;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.layout_container {
+    margin-top: 10px;
+}
