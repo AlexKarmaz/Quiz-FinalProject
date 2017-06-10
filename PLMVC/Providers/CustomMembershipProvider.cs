@@ -18,22 +18,35 @@ namespace PLMVC.Providers
             get { return (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService)); }
         }
 
+        public IProfileService ProfileService
+        {
+            get { return (IProfileService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService)); }
+        }
+
         public MembershipUser CreateUser(string email, string name, string password)
         {
-            var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };
+            MembershipUser membershipUser = GetUser(name, false);
+
+            if (!ReferenceEquals(membershipUser, null))
+                return null;
+
+           var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };
+           
             var role = RoleService.GetOneByPredicate(r => r.Name == "User");
-            
+
             var user = new BllUser()
             {
                 Email = email,
                 UserName = name,
                 Password = password,
-                Profile = profile,
-                Roles = new List<BllRole>() { role}
+              //  ProfileId = profile.Id,
+                Profile = profile
             };
-          //  user.Roles.Add(role);
-            UserService.Create(user);
-            var membershipUser = GetUser(name, false);
+          
+            UserService.Create(user, role.Id);
+
+            membershipUser = GetUser(name, false);
+
             return membershipUser;
         }
 

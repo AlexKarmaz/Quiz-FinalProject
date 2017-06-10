@@ -9,5 +9,6 @@ namespace BLL.Interface.Interfaces
 {
     public interface IRoleService : IService<BllRole>
     {
+        bool IsUserInRole(string userName, string roleName);
     }
 }

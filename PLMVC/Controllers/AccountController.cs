@@ -69,25 +69,29 @@ namespace PLMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                MembershipRegistration(viewModel);
-                FormsAuthentication.SetAuthCookie(viewModel.UserName, false);
-                return RedirectToAction("Index", "Home");
+                var membershipUser = ((CustomMembershipProvider)Membership.Provider)
+                .CreateUser(viewModel.UserEmail, viewModel.UserName, viewModel.UserPassword);
+                if (membershipUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(viewModel.UserName, false);
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             return View(viewModel);
         }
 
-        [ChildActionOnly]
-        public void MembershipRegistration(RegisterViewModel viewModel)
-        {
-            var membershipUser = ((CustomMembershipProvider)Membership.Provider)
-                .CreateUser(viewModel.UserEmail, viewModel.UserName, viewModel.UserPassword);
-            //if (membershipUser != null)
-            //{
-            //    var profile = profileService.GetOneByPredicate(p => p.UserId == viewModel.UserId);
-            //    profileService.Update(profile);
-            //}
-        }
+        //[ChildActionOnly]
+        //public void MembershipRegistration(RegisterViewModel viewModel)
+        //{
+        //    var membershipUser = ((CustomMembershipProvider)Membership.Provider)
+        //        .CreateUser(viewModel.UserEmail, viewModel.UserName, viewModel.UserPassword);
+        //    //if (membershipUser != null)
+        //    //{
+        //    //    var profile = profileService.GetOneByPredicate(p => p.UserId == viewModel.UserId);
+        //    //    profileService.Update(profile);
+        //    //}
+        //}
 
         public ActionResult Logoff()
         {

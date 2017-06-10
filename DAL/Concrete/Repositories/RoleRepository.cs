@@ -19,6 +19,13 @@ namespace DAL.Concrete.Repositories
         {
             this.context = context;
         }
+
+        public bool IsUserInRole(string userName, string roleName)
+        {
+            var user = context.Set<User>().FirstOrDefault(u => u.UserName == userName);
+
+            return user.Roles.Any(r => r.Name == roleName);
+        }
         public void Create(DalRole entity)
         {
             context.Set<Role>().Add(entity.ToOrmRole());
@@ -31,7 +38,14 @@ namespace DAL.Concrete.Repositories
 
         public void Update(DalRole entity)
         {
-            throw new NotImplementedException();
+            if (entity != null)
+            {
+                var roleToUpdate = context.Set<Role>().FirstOrDefault(u => u.Id == entity.Id);
+                var ormRole = entity.ToOrmRole();
+                context.Set<Role>().Attach(roleToUpdate);
+                roleToUpdate.Users = ormRole.Users;
+                context.Entry(roleToUpdate).State = System.Data.Entity.EntityState.Modified;
+            }
         }
 
         public IEnumerable<DalRole> GetAll()

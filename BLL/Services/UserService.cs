@@ -36,10 +36,16 @@ namespace BLL.Services
                 return null;
             return user.ToBllUser();
         }
-
-        public void Create(BllUser entity)
+        public string[] GetRolesForUser(string username)
         {
-            userRepository.Create(entity.ToDalUser());
+            return userRepository.GetRolesForUser(username);
+        }
+
+        public void Create(BllUser entity, int roleId)
+        {
+          //  var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };
+
+            userRepository.Create(entity.ToDalUser(), roleId);
             unitOfWork.Commit();
         }
 

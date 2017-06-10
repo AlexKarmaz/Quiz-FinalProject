@@ -21,8 +21,7 @@ namespace BLL.Mappers
                 Password = bllUser.Password,
                 Email = bllUser.Email,
                 ProfileId = bllUser.ProfileId,
-                Profile = bllUser.Profile.ToDalProfile(),
-                Roles = bllUser.Roles.Select(r => r.ToDalRole()).ToList()
+                Profile = bllUser.Profile.ToDalProfile()
             };
             return dalUser;
         }
@@ -38,8 +37,7 @@ namespace BLL.Mappers
                 Password = dalUser.Password,
                 Email = dalUser.Email,
                 ProfileId = dalUser.ProfileId,
-                Profile = dalUser.Profile.ToBllProfile(),
-                Roles = dalUser.Roles.Select(r => r.ToBllRole()).ToList()
+                Profile = dalUser.Profile.ToBllProfile()
             };
             return bllUser;
         }

@@ -37,6 +37,15 @@ textarea {
     margin: 0 50px;
 }
 
+.copyright-content.social{
+    display: flex;
+    margin-right: 30px;
+}
+
+.btn-social-icon {
+    margin-right: 5px;
+}
+
 .navbar-brand {
     font-size: 25px;
 }

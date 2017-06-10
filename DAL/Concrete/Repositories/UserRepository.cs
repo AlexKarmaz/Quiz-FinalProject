@@ -19,7 +19,16 @@ namespace DAL.Concrete.Repositories
         {
             this.context = context;
         }
+        public string[] GetRolesForUser(string userName)
+        {
+            var user = context.Set<User>().FirstOrDefault(u => u.UserName == userName);
 
+            string[] roles = new string[user.Roles.Count];
+            for (int i = 0; i < user.Roles.Count; i++)
+                roles[i] = user.Roles.ElementAt(i).Name;
+            
+            return roles;
+        }
         public IEnumerable<DalUser> GetAll()
         {
             var users = context.Set<User>().Select(user => user).ToList();
@@ -32,9 +41,18 @@ namespace DAL.Concrete.Repositories
             return ormUser.ToDalUser();
         }
 
-        public void Create(DalUser entity)
+        public void Create(DalUser entity, int roleId)
         {
+            var role = context.Set<Role>().FirstOrDefault(r => r.Id == roleId);
+            var profile = context.Set<Profile>().FirstOrDefault(p => p.Id == entity.ProfileId);
             var user = entity.ToOrmUser();
+
+            if (!ReferenceEquals(role, null))
+                user.Roles.Add(role);
+
+            if (!ReferenceEquals(profile, null))
+                user.Profile = profile;
+
             context.Set<User>().Add(user);
         }
 

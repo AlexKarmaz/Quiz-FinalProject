@@ -24,29 +24,12 @@ namespace PLMVC.Providers
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            var roles = UserService.GetOneByPredicate(u => u.UserName == username).Roles;
-            foreach (var role in roles)
-            {
-                if (role.Name == roleName)
-                    return true;
-            }
-            return false;
+            return RoleService.IsUserInRole(username, roleName);
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            var roles = new List<string>();
-            var user = UserService.GetOneByPredicate(u => u.UserName == username);
-
-            if (user == null)
-                return new string[]{ };
-
-            foreach(var role in user.Roles)
-            {
-                roles.Add(role.Name);
-            }
-           
-            return roles.ToArray();
+            return UserService.GetRolesForUser(username);
         }
 
         public override void CreateRole(string roleName)

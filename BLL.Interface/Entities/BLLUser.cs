@@ -14,6 +14,5 @@ namespace BLL.Interface.Entities
         public string Email { get; set; }
         public int? ProfileId { get; set; }
         public BllProfile Profile { get; set; }
-        public ICollection<BllRole> Roles { get; set; }
     }
 }

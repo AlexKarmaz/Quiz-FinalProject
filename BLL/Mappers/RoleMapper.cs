@@ -17,7 +17,7 @@ namespace BLL.Mappers
             var dalRole = new DalRole()
             {
                 Id = bllRole.Id,
-                Name = bllRole.Name
+                Name = bllRole.Name,
             };
             return dalRole;
         }
@@ -29,7 +29,7 @@ namespace BLL.Mappers
             var bllRole = new BllRole()
             {
                 Id = dalRole.Id,
-                Name = dalRole.Name
+                Name = dalRole.Name,
             };
             return bllRole;
         }

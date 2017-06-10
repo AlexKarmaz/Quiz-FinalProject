@@ -17,7 +17,7 @@ namespace DAL.Mappers
             var dalRole = new DalRole()
             {
                 Id = ormRole.Id,
-                Name = ormRole.Name
+                Name = ormRole.Name,
             };
             return dalRole;
         }
@@ -29,7 +29,7 @@ namespace DAL.Mappers
             var ormRole = new Role()
             {
                 Id = dalRole.Id,
-                Name = dalRole.Name
+                Name = dalRole.Name,
             };
             return ormRole;
         }

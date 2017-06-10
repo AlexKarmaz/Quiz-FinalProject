@@ -15,6 +15,5 @@ namespace DAL.Interface.DTO
         public string Email { get; set; }
         public int? ProfileId { get; set; }
         public DalProfile Profile { get; set; }
-        public ICollection<DalRole> Roles { get; set; }
     }
 }

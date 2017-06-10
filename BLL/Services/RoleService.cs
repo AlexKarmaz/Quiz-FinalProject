@@ -24,6 +24,8 @@ namespace BLL.Services
             this.roleRepository = roleRepository;
         }
 
+        public bool IsUserInRole(string userName, string roleName) => roleRepository.IsUserInRole(userName, roleName);
+
         public IEnumerable<BllRole> GetAll()
         {
             return roleRepository.GetAll().Select(r => r.ToBllRole());
@@ -48,7 +50,8 @@ namespace BLL.Services
 
         public void Update(BllRole entity)
         {
-            throw new NotImplementedException();
+            roleRepository.Update(entity.ToDalRole());
+            unitOfWork.Commit();
         }
 
         public BllRole GetOneByPredicate(Expression<Func<BllRole, bool>> predicates)
