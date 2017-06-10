@@ -61,23 +61,13 @@ namespace DAL.Concrete.Repositories
         public void Update(DalProfile entity)
         {
             throw new NotImplementedException();
-            //if (entity != null)
-            //{
-            //    var profile = context.Set<Profile>().FirstOrDefault(p => p.Id == entity.Id);
-            //    if (profile != null)
-            //    {
-            //        context.Set<Profile>().Attach(profile);
-            //        var ormProfile = entity.ToOrmProfile();
-
-            //        //profile.FirstName = e.FirstName ?? profile.FirstName;
-            //        //profile.LastName = e.LastName ?? profile.LastName;
-
-            //        //profile.City = e.City ?? profile.City;
-
-            //        context.Entry(profile).State = EntityState.Modified;
-            //    }
-            //}
-
+        }
+        public void UpdateUserId(DalProfile entity, int id)
+        {
+            var profileToUpdate = context.Set<Profile>().FirstOrDefault(u => u.Id == entity.Id);
+            context.Set<Profile>().Attach(profileToUpdate);
+            profileToUpdate.UserId = id;
+            context.Entry(profileToUpdate).State = System.Data.Entity.EntityState.Modified;           
         }
 
     }

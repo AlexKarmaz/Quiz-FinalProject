@@ -20,7 +20,7 @@ namespace PLMVC.Providers
 
         public IProfileService ProfileService
         {
-            get { return (IProfileService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService)); }
+            get { return (IProfileService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IProfileService)); }
         }
 
         public MembershipUser CreateUser(string email, string name, string password)
@@ -39,12 +39,14 @@ namespace PLMVC.Providers
                 Email = email,
                 UserName = name,
                 Password = password,
-              //  ProfileId = profile.Id,
                 Profile = profile
             };
           
             UserService.Create(user, role.Id);
+            user = UserService.GetOneByPredicate(n => n.UserName == name);
+            profile = ProfileService.GetById(Convert.ToInt32(user.ProfileId));
 
+            ProfileService.UpdateUserId(profile, user.Id);
             membershipUser = GetUser(name, false);
 
             return membershipUser;

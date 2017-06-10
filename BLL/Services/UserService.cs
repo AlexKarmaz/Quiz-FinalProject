@@ -43,8 +43,6 @@ namespace BLL.Services
 
         public void Create(BllUser entity, int roleId)
         {
-          //  var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };
-
             userRepository.Create(entity.ToDalUser(), roleId);
             unitOfWork.Commit();
         }

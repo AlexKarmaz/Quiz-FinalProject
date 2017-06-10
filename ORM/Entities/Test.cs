@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,9 @@ namespace ORM.Entities
         public double MinToSuccess { get; set; }
         public DateTime DateCreation { get; set; }
         public int UserId { get; set; }
+        [ForeignKey("Theme")]
         public int ThemeId { get; set; }
+        public virtual Theme Theme { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<TestResult> TestResults { get; set; }
     }

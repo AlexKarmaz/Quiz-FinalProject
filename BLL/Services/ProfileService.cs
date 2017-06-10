@@ -54,6 +54,12 @@ namespace BLL.Services
             throw new NotImplementedException();
         }
 
+        public void UpdateUserId(BllProfile entity, int id)
+        {
+            profileRepository.UpdateUserId(entity.ToDalProfile(), id);
+            unitOfWork.Commit();
+        }
+
         public BllProfile GetOneByPredicate(Expression<Func<BllProfile, bool>> predicates)
         {
             return GetAllByPredicate(predicates).FirstOrDefault();
