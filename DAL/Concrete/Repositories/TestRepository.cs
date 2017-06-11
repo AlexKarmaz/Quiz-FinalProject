@@ -35,6 +35,9 @@ namespace DAL.Concrete.Repositories
         public void Create(DalTest entity)
         {
             var test = entity.ToOrmTest();
+            var ormProfile = context.Set<Profile>().FirstOrDefault(u => u.UserId == test.UserId);
+            ormProfile.CreatedTests.Add(test);
+
             context.Set<Test>().Add(test);
         }
 

@@ -9,7 +9,7 @@ namespace PLMVC.Models.Profile
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        //public List<TestViewModel> PassedTests { get; set; }
+       // public List<TestViewModel> PassedTests { get; set; }
        // public List<TestViewModel> CreatedTests { get; set; }
     }
 }

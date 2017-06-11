@@ -7,9 +7,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" >@Html.ActionLink("Quiz", "Index", "Home", null, htmlAttributes: new { @class = "navbar-brand" })</a>
+        <a class="navbar-brand">@Ajax.ActionLink("Quiz", "Index", "Home", new AjaxOptions { UpdateTargetId = "main_container" , LoadingElementId = "loading" })</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar_collapse_1">
+        <ul class="nav navbar-nav navbar-left text-center">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li>
+                    @Ajax.ActionLink("Create test","CreateTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle login-dropdown" data-toggle="dropdown" role="button">Themes<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                        </li>
+                        <li>  
+                        </li>
+                    </ul>
+                </li>
+
+            }
+        </ul>
         <ul class="nav navbar-nav navbar-right text-center">
             @*@if (User.Identity.IsAuthenticated)
             {

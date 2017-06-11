@@ -24,9 +24,7 @@ namespace PLMVC.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name);
-
                 return View();
-
 
             }
 

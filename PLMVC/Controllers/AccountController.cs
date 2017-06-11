@@ -81,18 +81,6 @@ namespace PLMVC.Controllers
             return View(viewModel);
         }
 
-        //[ChildActionOnly]
-        //public void MembershipRegistration(RegisterViewModel viewModel)
-        //{
-        //    var membershipUser = ((CustomMembershipProvider)Membership.Provider)
-        //        .CreateUser(viewModel.UserEmail, viewModel.UserName, viewModel.UserPassword);
-        //    //if (membershipUser != null)
-        //    //{
-        //    //    var profile = profileService.GetOneByPredicate(p => p.UserId == viewModel.UserId);
-        //    //    profileService.Update(profile);
-        //    //}
-        //}
-
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();
