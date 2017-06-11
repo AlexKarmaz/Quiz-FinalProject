@@ -168,6 +168,7 @@
     <Compile Include="Models\Question\QuestionViewModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\Test\CreateTestViewModel.cs" />
+    <Compile Include="Models\Test\DetailsTestViewModel.cs" />
     <Compile Include="Models\Test\TestViewModel.cs" />
     <Compile Include="Models\Theme\ThemeViewModel.cs" />
     <Compile Include="Models\User\LogViewModel.cs" />
@@ -189,6 +190,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Loading\1.gif" />
+    <Content Include="Content\Loading\4.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -251,6 +254,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Test\_CreateTest.cshtml" />
+    <Content Include="Views\Shared\_Loading.cshtml" />
+    <Content Include="Views\Test\_TestDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

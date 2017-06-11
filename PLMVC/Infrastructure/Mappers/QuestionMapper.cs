@@ -22,5 +22,19 @@ namespace PLMVC.Infrastructure.Mappers
             };
             return bllQuestion;
         }
+
+        public static QuestionViewModel ToMvcQuestion(this BllQuestion bllQuestion)
+        {
+            if (bllQuestion == null)
+                return null;
+            var mvcQuestion = new QuestionViewModel()
+            {
+                Id = bllQuestion.Id,
+                ThemeId = bllQuestion.ThemeId,
+                Text = bllQuestion.Text,
+                Answers = bllQuestion.Answers.Select(r => r.ToMvcAnswer()).ToList()
+            };
+            return mvcQuestion;
+        }
     }
 }

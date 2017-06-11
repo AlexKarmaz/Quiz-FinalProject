@@ -53,3 +53,7 @@ textarea {
 .layout_container {
     margin-top: 10px;
 }
+
+.loading {
+    margin:auto;
+}

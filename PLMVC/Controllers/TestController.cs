@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PLMVC.Models.Question;
 using BLL.Interface.Entities;
+using System.Net;
 
 namespace PLMVC.Controllers
 {
@@ -30,8 +31,8 @@ namespace PLMVC.Controllers
         [HttpGet]
         public ActionResult CreateTest()
         {
-           
-           SelectList themes = new SelectList(themeService.GetAll(),"Id", "Name");
+            //System.Threading.Thread.Sleep(5000);
+            SelectList themes = new SelectList(themeService.GetAll(),"Id", "Name");
            ViewBag.Themes = themes;
             if (Request.IsAjaxRequest())
                 return PartialView("_CreateTest");
@@ -52,11 +53,30 @@ namespace PLMVC.Controllers
                 testService.Create(test);
                 if (Request.IsAjaxRequest())
                 {
-                  return Redirect(Url.Action("Index", "Home"));// ССЫЛКА НА EDIT TEST PARTIAL VIEW 
+                 int testId = testService.GetOneByPredicate(t => t.Title == model.Title).Id;
+                 return Redirect(Url.Action("TestDetails", testId));// ССЫЛКА НА EDIT TEST PARTIAL VIEW 
                 }
                 return Redirect(Url.Action("Index", "Home"));
             }
             return PartialView("CreateTest");
+        }
+
+        [HttpGet]
+        public ActionResult TestDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var bllTest = testService.GetOneByPredicate(t=>t.Id == id);
+            string userName = userService.GetOneByPredicate(u => u.Id == bllTest.UserId).UserName;
+            string themeName = themeService.GetOneByPredicate(t => t.Id == bllTest.ThemeId).Name;
+            var mvcTest = bllTest.ToMvcTest();
+            mvcTest.UserName = userName;
+            mvcTest.ThemeName = themeName;
+            if (Request.IsAjaxRequest())
+                return PartialView("_TestDetails",mvcTest);
+            return View("_TestDetails",mvcTest);
         }
     }
 }

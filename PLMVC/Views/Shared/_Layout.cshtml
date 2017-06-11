@@ -19,10 +19,13 @@
     @Html.Partial("_Header")
     <div class="container layout_container">
         <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 pull-right container jumbotron">
-            <div id="loading" style="display:none;">
-                <h2>Loading...Please wait</h2>
-            </div>
+            @*<div id="loading" style="display:none;">
+                @Html.Partial("_Loading")
+            </div>*@
             <div id="main_container">
+                <div id="loading" style="display:none;">
+                    @Html.Partial("_Loading")
+                </div>
                 @RenderBody()
             </div>
         </div>
