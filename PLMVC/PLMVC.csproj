@@ -151,6 +151,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +257,9 @@
     <Content Include="Views\Test\_CreateTest.cshtml" />
     <Content Include="Views\Shared\_Loading.cshtml" />
     <Content Include="Views\Test\_TestDetails.cshtml" />
+    <Content Include="Views\Question\_CreateTestQuestion.cshtml" />
+    <Content Include="Views\Question\_EditTestQuestions.cshtml" />
+    <Content Include="Views\Question\_DetailsTestQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

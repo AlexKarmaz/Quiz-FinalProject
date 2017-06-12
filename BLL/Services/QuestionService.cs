@@ -42,6 +42,11 @@ namespace BLL.Services
             questionRepository.Create(entity.ToDalQuestion());
             unitOfWork.Commit();
         }
+        public void CreateAndUpdateTestId(BllQuestion entity, int testId)
+        {
+            questionRepository.CreateAndUpdateTestId(entity.ToDalQuestion(), testId);
+            unitOfWork.Commit();
+        }
 
         public void Delete(BllQuestion entity)
         {

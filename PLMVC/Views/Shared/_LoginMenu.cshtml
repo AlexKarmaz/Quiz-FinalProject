@@ -1,13 +1,12 @@
-﻿@Scripts.Render("~/Scripts/customJS.js")
+﻿@using PLMVC.Infrastructure
+
 @if (User.Identity.IsAuthenticated)
 {
     <li class="dropdown">
         <a class="dropdown-toggle login-dropdown" data-toggle="dropdown" role="button">@User.Identity.Name <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-           <li>
-                <a>
-                    <i class="glyphicon glyphicon-home"></i>@Ajax.ActionLink("Profile", "Index", "Profile", new AjaxOptions { UpdateTargetId = "main_container" })
-                </a>
+           <li class="dropdown-list">
+               @Ajax.ActionLinkWithGlyphicon("glyphicon glyphicon-home", "Profile", "Index", "Profile", new AjaxOptions { UpdateTargetId = "main_container" })
             </li>
             @*<li class="divider"></li>
             <li><a href="@Url.Action("Edit", "Profile", new { name = User.Identity.Name })"><i class="glyphicon glyphicon-edit"></i>Edit Profile</a></li>*@

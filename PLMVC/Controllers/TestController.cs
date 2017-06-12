@@ -38,13 +38,14 @@ namespace PLMVC.Controllers
                 return PartialView("_CreateTest");
            return View("_CreateTest");
         }
+
         [HttpPost]
         public ActionResult CreateTest(CreateTestViewModel model)
         {
             if (ModelState.IsValid)
             {
                 int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
-                model.ThemeId = 1;// ВЫБИРАТЬ НА ВЬЮХЕ 
+               // model.ThemeId = 1;// ВЫБИРАТЬ НА ВЬЮХЕ 
                 model.Questions = new List<QuestionViewModel>();
                 var test = model.ToBllTest();
                 test.DateCreation = DateTime.Now;
@@ -54,7 +55,7 @@ namespace PLMVC.Controllers
                 if (Request.IsAjaxRequest())
                 {
                  int testId = testService.GetOneByPredicate(t => t.Title == model.Title).Id;
-                 return Redirect(Url.Action("TestDetails", testId));// ССЫЛКА НА EDIT TEST PARTIAL VIEW 
+                 return RedirectToAction("TestDetails","Test", new { id = testId }); 
                 }
                 return Redirect(Url.Action("Index", "Home"));
             }
@@ -74,6 +75,7 @@ namespace PLMVC.Controllers
             var mvcTest = bllTest.ToMvcTest();
             mvcTest.UserName = userName;
             mvcTest.ThemeName = themeName;
+            ViewBag.TestId = bllTest.Id;
             if (Request.IsAjaxRequest())
                 return PartialView("_TestDetails",mvcTest);
             return View("_TestDetails",mvcTest);

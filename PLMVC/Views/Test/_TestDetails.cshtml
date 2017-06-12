@@ -1,7 +1,7 @@
 ﻿@model PLMVC.Models.Test.DetailsTestViewModel
 
 <div>
-    <h4>DetailsTestViewModel</h4>
+    <h4>Details test</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -62,4 +62,15 @@
 
     </dl>
 </div>
+<div id="details_test_questions">
+детали вопросов 
+</div>
+<div id="edit_test_question">
+
+</div>
+<div>
+    @Ajax.ActionLink("Show questions", "DetailsTestQuestions","Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "GET" })
+    @*@Ajax.ActionLink("Add question", "CreateTestQuestion","Question",new { testId = @ViewBag.testId },new AjaxOptions { UpdateTargetId = "edit_test_questions", HttpMethod = "GET"})*@
+</div>
+
 

@@ -4,8 +4,6 @@
     ViewBag.Title = "CreateTest";
 }
 
-<h2>CreateTest</h2>
-
 @using (Ajax.BeginForm("CreateTest", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
@@ -47,12 +45,12 @@
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.ThemeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.ThemeId, ViewBag.Themes as SelectList)
+                @Html.DropDownListFor(x => x.ThemeId, ViewBag.Themes as SelectList, htmlAttributes: new { @class = "dropdown-input" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

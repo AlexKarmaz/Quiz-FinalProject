@@ -47,7 +47,11 @@ textarea {
 }
 
 .navbar-brand {
-    font-size: 25px;
+    font-size: 20px;
+}
+
+.navbar-create {
+    font-size: 20px;
 }
 
 .layout_container {
@@ -56,4 +60,12 @@ textarea {
 
 .loading {
     margin:auto;
+}
+
+.dropdown-list {
+    display: flex;
+}
+
+.dropdown-input {
+    color: black;
 }

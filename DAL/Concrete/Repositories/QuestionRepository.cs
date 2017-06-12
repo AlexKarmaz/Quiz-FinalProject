@@ -37,7 +37,14 @@ namespace DAL.Concrete.Repositories
             var question = entity.ToOrmQuestion();
             context.Set<Question>().Add(question);
         }
-
+        public void CreateAndUpdateTestId(DalQuestion entity,int testId)
+        {
+            var question = entity.ToOrmQuestion();
+            var test = context.Set<Test>().FirstOrDefault(t => t.Id == testId);
+            test.Questions.Add(question);
+            context.Set<Question>().Add(question);
+        }
+        
         public void Delete(DalQuestion entity)
         {
             var ormQuestion = entity.ToOrmQuestion();

@@ -9,5 +9,6 @@ namespace DAL.Interface.Interfaces
 {
     public interface IQuestionRepository : IRepository<DalQuestion>
     {
+        void CreateAndUpdateTestId(DalQuestion entity, int testId);
     }
 }

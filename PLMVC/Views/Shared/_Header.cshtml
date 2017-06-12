@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand">@Ajax.ActionLink("Quiz", "Index", "Home", new AjaxOptions { UpdateTargetId = "main_container" , LoadingElementId = "loading" })</a>
+        <a class="navbar-brand">@Ajax.ActionLink("Quiz", "Index", "Home", new AjaxOptions { UpdateTargetId = "main_container" , LoadingElementId = "loading" }, htmlAttributes: new { @class = "navbar-brand" })</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar_collapse_1">
         <ul class="nav navbar-nav navbar-left text-center">
             @if (User.Identity.IsAuthenticated)
             {
-                <li>
+                <li class="navbar-create">
                     @Ajax.ActionLink("Create test","CreateTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
                 </li>
                 <li class="dropdown">

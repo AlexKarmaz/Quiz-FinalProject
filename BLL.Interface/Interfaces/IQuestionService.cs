@@ -9,5 +9,6 @@ namespace BLL.Interface.Interfaces
 {
     public interface IQuestionService : IService<BllQuestion>
     {
+       void CreateAndUpdateTestId(BllQuestion entity, int testId);
     }
 }
