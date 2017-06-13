@@ -18,8 +18,10 @@
                 @Html.DisplayNameFor(model => model.Text)
             </th>
             <th>
-
             </th>
+            <th>
+            </th>
+
          </tr>
         @foreach (var item in Model)
         {
@@ -29,6 +31,9 @@
              </td>
              <td>
                  @Ajax.ActionLink("Details", "DetailsOneQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"})
+             </td>
+             <td>
+                 @Ajax.ActionLink("Delete", "DeleteTestQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "details_test_questions", Confirm = "Do you really want to delete this question?" , HttpMethod = "GET"})
              </td>
          </tr>
         }

@@ -120,8 +120,23 @@ namespace PLMVC.Controllers
                 var bllQuestion = model.ToBllQuestion();
                 questionService.Update(bllQuestion);
             }
-
             return RedirectToAction("DetailsTestQuestions", "Question", new { testId = model.TestId });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteTestQuestion(int? questionId)
+        {
+            if (questionId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var question = questionService.GetOneByPredicate(q => q.Id == questionId);
+            if (question == null)
+            {
+                return HttpNotFound();
+            }
+            questionService.Delete(question);
+            return RedirectToAction("DetailsTestQuestions", "Question", new { testId = question.TestId });
         }
     }
 }
