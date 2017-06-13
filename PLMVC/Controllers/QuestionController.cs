@@ -25,11 +25,8 @@ namespace PLMVC.Controllers
             this.answerService = answerService;
         }
 
-        // GET: Question
-        public ActionResult Index()
-        {
-            return View();
-        }
+    
+       
 
         [HttpGet]
         public ActionResult CreateTestQuestion(int? testId)
@@ -47,19 +44,16 @@ namespace PLMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateTestQuestion(QuestionViewModel model)//int? testId 
+        public ActionResult CreateTestQuestion(QuestionViewModel model)
         {
-            if (/*testId == null ||*/ model == null)
+            if (model == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //model.ThemeId = Convert.ToInt32(themeId);
             model.Answers = new List<AnswerViewModel>();
             var question = model.ToBllQuestion();
             questionService.CreateAndUpdateTestId(question,Convert.ToInt32(model.TestId));
-            //if (Request.IsAjaxRequest())
-            //    return PartialView("_CreateTestQuestion", mvcTest);
-            //return View("_CreateTestQuestion");
+ 
             return RedirectToAction("DetailsTestQuestions", "Question",new { testId = model.TestId});
         }
 
