@@ -19,6 +19,7 @@ namespace DAL.Mappers
                 Id = ormQuestion.Id,
                 ThemeId = ormQuestion.ThemeId,
                 Text = ormQuestion.Text,
+                TestId = ormQuestion.TestId,
                 Answers = ormQuestion.Answers.Select(r => r.ToDalAnswer()).ToList()
             };
             return dalQuestion;
@@ -33,6 +34,7 @@ namespace DAL.Mappers
                 Id = dalQuestion.Id,
                 ThemeId = dalQuestion.ThemeId,
                 Text = dalQuestion.Text,
+                TestId = dalQuestion.TestId,
                 Answers = dalQuestion.Answers.Select(r => r.ToOrmAnswer()).ToList()
             };
             return ormQuestion;

@@ -19,6 +19,7 @@ namespace BLL.Mappers
                 Id = bllQuestion.Id,
                 ThemeId = bllQuestion.ThemeId,
                 Text = bllQuestion.Text,
+                TestId = bllQuestion.TestId,
                 Answers = bllQuestion.Answers.Select(r => r.ToDalAnswer()).ToList()
             };
             return dalQuestion;
@@ -33,6 +34,7 @@ namespace BLL.Mappers
                 Id = dalQuestion.Id,
                 ThemeId = dalQuestion.ThemeId,
                 Text = dalQuestion.Text,
+                TestId = dalQuestion.TestId,
                 Answers = dalQuestion.Answers.Select(r => r.ToBllAnswer()).ToList()
             };
             return bllQuestion;

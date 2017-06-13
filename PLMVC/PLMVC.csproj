@@ -258,8 +258,9 @@
     <Content Include="Views\Shared\_Loading.cshtml" />
     <Content Include="Views\Test\_TestDetails.cshtml" />
     <Content Include="Views\Question\_CreateTestQuestion.cshtml" />
-    <Content Include="Views\Question\_EditTestQuestions.cshtml" />
+    <Content Include="Views\Question\_EditTestQuestion.cshtml" />
     <Content Include="Views\Question\_DetailsTestQuestions.cshtml" />
+    <Content Include="Views\Question\_DetailsQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

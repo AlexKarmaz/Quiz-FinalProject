@@ -13,6 +13,7 @@
     <hr />
     <table class="table">
         <tr>
+
             <th>
                 @Html.DisplayNameFor(model => model.Text)
             </th>
@@ -27,14 +28,14 @@
                 @Html.DisplayFor(modelItem => item.Text)
              </td>
              <td>
-                 @Ajax.ActionLink("Edit", "EditTestQuestion", new { id = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"})
+                 @Ajax.ActionLink("Details", "DetailsOneQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"})
              </td>
          </tr>
         }
      </table>
     }
+    @Ajax.ActionLink("Add question", "CreateTestQuestion", "Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "GET" })
 <div id="work_with_question">
 
 </div>
-    @Ajax.ActionLink("Add question", "CreateTestQuestion", "Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "GET" })
 </div>

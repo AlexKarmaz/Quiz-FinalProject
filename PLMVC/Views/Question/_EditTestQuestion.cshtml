@@ -1,20 +1,21 @@
 ﻿@model PLMVC.Models.Question.QuestionViewModel
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm("EditTestQuestion", new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Edit questions</h4>
+        <h4>Edit question</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
+        @Html.HiddenFor(model => model.TestId)
+        @Html.HiddenFor(model => model.ThemeId)
+        @*<div class="form-group">
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.ThemeId)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -27,7 +28,9 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+                @*@Ajax.ActionLink("Save", "EditTestQuestion",new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "POST" })*@
         </div>
     </div>
+</div>
 }
+

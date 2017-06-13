@@ -16,6 +16,7 @@ namespace ORM.Entities
         [ForeignKey("Theme")]
         public int ThemeId { get; set; }
         public virtual Theme Theme { get; set; }
+        public int? TestId { get; set; }
         public string Text { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
     }

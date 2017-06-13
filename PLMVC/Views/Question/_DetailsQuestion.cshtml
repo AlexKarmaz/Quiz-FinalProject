@@ -1,0 +1,27 @@
+﻿@model PLMVC.Models.Question.QuestionViewModel
+
+<div id="detail_one_question">
+    <h4>Question details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dd>
+            @Html.HiddenFor(model => model.ThemeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+    </dl>
+    <p>
+        @Ajax.ActionLink("Edit", "EditTestQuestion", new { questionId = Model.Id }, new AjaxOptions { UpdateTargetId = "detail_one_question", HttpMethod = "GET" })
+    </p>
+</div>
+<div id="work_with_answers">
+    работа с ответами
+</div>

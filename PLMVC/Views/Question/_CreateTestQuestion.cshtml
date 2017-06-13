@@ -1,6 +1,6 @@
 ﻿@model PLMVC.Models.Question.QuestionViewModel
 
-@using (Ajax.BeginForm("CreateTestQuestion","Question", new {testId = @ViewBag.testId} ,new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "POST" }))
+@using (Ajax.BeginForm("CreateTestQuestion","Question",new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
     
@@ -9,6 +9,7 @@
         </div>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TestId)
         <div class="form-group">
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.Id)

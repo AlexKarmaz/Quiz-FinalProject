@@ -18,6 +18,7 @@ namespace PLMVC.Infrastructure.Mappers
                 Id = mvcQuestion.Id,
                 ThemeId = mvcQuestion.ThemeId,
                 Text = mvcQuestion.Text,
+                TestId = mvcQuestion.TestId,
                 Answers = mvcQuestion.Answers.Select(r => r.ToBllAnswer()).ToList()
             };
             return bllQuestion;
@@ -32,6 +33,7 @@ namespace PLMVC.Infrastructure.Mappers
                 Id = bllQuestion.Id,
                 ThemeId = bllQuestion.ThemeId,
                 Text = bllQuestion.Text,
+                TestId = bllQuestion.TestId,
                 Answers = bllQuestion.Answers.Select(r => r.ToMvcAnswer()).ToList()
             };
             return mvcQuestion;
