@@ -1,0 +1,44 @@
+﻿@using BLL.Interface.Entities 
+@model IEnumerable<PLMVC.Models.Test.ShowTestsViewModel>
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Category
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @foreach (var item in ViewBag.Categories as IEnumerable<BllTheme>)
+        {
+            <li>@Ajax.ActionLink(@item.Name, "ShowTestsByTheme", "Test", new { categoryId = item.Id },new AjaxOptions {UpdateTargetId = "main_table_tests", LoadingElementId = "loading", HttpMethod="GET" })</li>
+        }
+    </ul>
+</div>
+<div id ="main_table_tests">
+<h2>Recent added tests</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        </td>
+    </tr>
+}
+</table>
+</div>

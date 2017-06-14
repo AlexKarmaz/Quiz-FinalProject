@@ -171,6 +171,7 @@
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\Test\CreateTestViewModel.cs" />
     <Compile Include="Models\Test\DetailsTestViewModel.cs" />
+    <Compile Include="Models\Test\ShowTestsViewModel.cs" />
     <Compile Include="Models\Test\TestViewModel.cs" />
     <Compile Include="Models\Theme\ThemeViewModel.cs" />
     <Compile Include="Models\User\LogViewModel.cs" />
@@ -265,6 +266,8 @@
     <Content Include="Views\Answer\_DetailsQuestionAnswers.cshtml" />
     <Content Include="Views\Answer\_CreateQuestionAnswer.cshtml" />
     <Content Include="Views\Answer\_EditQuestionAnswer.cshtml" />
+    <Content Include="Views\Test\_ShowLastTests.cshtml" />
+    <Content Include="Views\Test\_ShowTestsByTheme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

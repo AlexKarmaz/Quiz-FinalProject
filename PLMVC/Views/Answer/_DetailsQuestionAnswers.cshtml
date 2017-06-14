@@ -22,8 +22,8 @@
                 </th>
                 <th>
                 </th>
-                <th>
-                </th>
+                @*<th>
+                </th>*@
 
             </tr>
             @foreach (var item in Model)
@@ -37,10 +37,11 @@
                     </td>
                     <td>
                         @Ajax.ActionLink("Edit", "EditQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_answer" })
-                    </td>
-                    <td>
                         @Ajax.ActionLink("Delete", "DeleteQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "details_question_answers", Confirm = "Do you really want to delete this answer?", HttpMethod = "GET" })
                     </td>
+                    @*<td>
+                        @Ajax.ActionLink("Delete", "DeleteQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "details_question_answers", Confirm = "Do you really want to delete this answer?", HttpMethod = "GET" })
+                    </td>*@
                 </tr>
             }
         </table>

@@ -40,5 +40,16 @@ namespace PLMVC.Infrastructure.Mappers
                 Questions = bllTest.Questions.Select(r => r.ToMvcQuestion()).ToList()
             };
         }
+
+        public static ShowTestsViewModel ToMvcAllTests(this BllTest bllTest)
+        {
+            if (bllTest == null)
+                return null;
+            return new ShowTestsViewModel()
+            {
+                Title = bllTest.Title,
+                Description = bllTest.Description,
+            };
+        }
     }
 }

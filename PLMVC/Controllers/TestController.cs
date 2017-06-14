@@ -80,5 +80,29 @@ namespace PLMVC.Controllers
                 return PartialView("_TestDetails",mvcTest);
             return View("_TestDetails",mvcTest);
         }
+
+        [HttpGet]
+        public ActionResult ShowLastTests()
+        {
+            var tests = testService.GetAll().Reverse().Take(10);
+            var mvcTests = tests.Select(t => t.ToMvcAllTests());
+            ViewBag.Categories = themeService.GetAll();
+            if (Request.IsAjaxRequest())
+                return PartialView("_ShowLastTests", mvcTests);
+            return View("_ShowLastTests", mvcTests);
+        }
+
+        [HttpGet]
+        public ActionResult ShowTestsByTheme(int? categoryId)
+        {
+            var tests = testService.GetAllByPredicate(t => t.ThemeId == categoryId);
+            if (tests == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var mvcTests = tests.Select(t => t.ToMvcAllTests());
+            ViewBag.ThemeName = themeService.GetById(Convert.ToInt32(categoryId)).Name;
+            if (Request.IsAjaxRequest())
+                return PartialView("_ShowTestsByTheme", mvcTests);
+            return View("_ShowTestsByTheme", mvcTests);
+        }
     }
 }
