@@ -264,6 +264,7 @@
     <Content Include="Views\Question\_DetailsQuestion.cshtml" />
     <Content Include="Views\Answer\_DetailsQuestionAnswers.cshtml" />
     <Content Include="Views\Answer\_CreateQuestionAnswer.cshtml" />
+    <Content Include="Views\Answer\_EditQuestionAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

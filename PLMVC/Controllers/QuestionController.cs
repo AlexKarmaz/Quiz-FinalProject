@@ -25,9 +25,6 @@ namespace PLMVC.Controllers
             this.answerService = answerService;
         }
 
-    
-       
-
         [HttpGet]
         public ActionResult CreateTestQuestion(int? testId)
         {
