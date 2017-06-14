@@ -10,7 +10,7 @@
     <h3>Please, sign in</h3>
     <hr />
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true,"", new { @class = "text-danger" })
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon">
@@ -18,7 +18,7 @@
             </span>
             @Html.TextBox("UserName", null, new { @class = "form-control", @placeholder = "Enter login" })
         </div>
-        @Html.ValidationMessage("UserName")
+        @Html.ValidationMessage("UserName", new { @class = "text-danger" })
     </div>
             <div class="form-group">
                 <div class="input-group">
@@ -27,7 +27,7 @@
                     </span>
                     @Html.TextBox("Password", null, new { @class = "form-control", @placeholder = "Enter password", @type = "password" })
                 </div>
-                @Html.ValidationMessage("Password")
+                @Html.ValidationMessage("Password", new { @class = "text-danger" })
             </div>
             @Html.CheckBox("Remember Me", true, new { @name = "RememberMe" })
             @Html.Label("Remember Me", "Remember me")
