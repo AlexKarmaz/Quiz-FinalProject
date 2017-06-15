@@ -1,6 +1,7 @@
 ﻿using BLL.Interface.Interfaces;
 using PLMVC.Models.User;
 using PLMVC.Providers;
+using PLMVC.Infrastructure.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +86,29 @@ namespace PLMVC.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult GetAllUsers()
+        {
+            string[] roles;
+            int i = 0;
+            var users = userService.GetAllByPredicate(u => u.UserName != User.Identity.Name);
+            var mvcUsers = users.Select(u => u.ToMvcAllUsers());
+            ShowUsersViewModel[] newUsers = new ShowUsersViewModel[mvcUsers.Count()];
+            foreach (var mvcUser in mvcUsers)
+            {
+                roles = userService.GetRolesForUser(mvcUser.UserName);
+                // mvcUser.RoleNames = userService.GetRolesForUser(mvcUser.UserName).ToList();
+              //  mvcUser = new ShowUsersViewModel { Id = mvcUser.Id, Email = mvcUser.Email, UserName = mvcUser.UserName, RoleNames = string.Join(",", roles) };
+                mvcUser.RoleNames = string.Join(",", roles);
+                newUsers[i] = new ShowUsersViewModel { Id = mvcUser.Id, Email = mvcUser.Email, UserName = mvcUser.UserName, RoleNames = string.Join(",", roles) };
+                i++;
+            }
+          //  ViewBag.Roles = mvcUsers.Select(u => u.RoleNames = userService.GetRolesForUser(u.UserName));
+            if (Request.IsAjaxRequest())
+                return PartialView("_ShowAllUsers",newUsers);
+            return View("_ShowAllUsers",mvcUsers);
         }
     }
 }

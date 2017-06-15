@@ -19,13 +19,13 @@
     @Html.Partial("_Header")
     <div class="container layout_container">
         <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 pull-right container jumbotron">
-            @*<div id="loading" style="display:none;">
-                @Html.Partial("_Loading")
-            </div>*@
+            <div id="loading" style="display:none;" align="center">
+                @*@Html.Partial("_Loading")*@<img src="@Url.Content("~/Content/Loading/4.gif")" />
+            </div>
             <div id="main_container">
-                <div id="loading" style="display:none;">
+                @*<div id="loading" style="display:none;">
                     @Html.Partial("_Loading")
-                </div>
+                </div>*@
                 @RenderBody()
             </div>
         </div>

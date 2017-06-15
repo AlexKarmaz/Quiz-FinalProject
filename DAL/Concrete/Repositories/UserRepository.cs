@@ -22,11 +22,15 @@ namespace DAL.Concrete.Repositories
         public string[] GetRolesForUser(string userName)
         {
             var user = context.Set<User>().FirstOrDefault(u => u.UserName == userName);
-
+            int i = 0;
             string[] roles = new string[user.Roles.Count];
-            for (int i = 0; i < user.Roles.Count; i++)
-                roles[i] = user.Roles.ElementAt(i).Name;
-            
+           
+            foreach(Role role in user.Roles)
+            {
+                roles[i] = role.Name;
+                i++;
+            }
+
             return roles;
         }
         public IEnumerable<DalUser> GetAll()

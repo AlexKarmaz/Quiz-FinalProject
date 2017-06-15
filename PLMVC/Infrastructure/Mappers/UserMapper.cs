@@ -21,5 +21,16 @@ namespace PLMVC.Infrastructure.Mappers
                // Profile = bllUser.Profile.ToMvcProfile()
             };
         }
+
+        public static ShowUsersViewModel ToMvcAllUsers(this BllUser bllUser)
+        {
+            return new ShowUsersViewModel()
+            {
+                Id = bllUser.Id,
+                UserName = bllUser.UserName,
+                Email = bllUser.Email,
+                RoleNames = ""
+            };
+        }
     }
 }

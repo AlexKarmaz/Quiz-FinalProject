@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PLMVC.Models.User.ShowUsersViewModel>
+
+<p>
+    @Ajax.ActionLink("Create user", "Register", "Account",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
+</p>
+@if (Model.Count() == 0)
+{
+    <b>Only you are registered on this site...</b>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            User name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            Roles
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @string.Join(",", item.RoleNames)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
