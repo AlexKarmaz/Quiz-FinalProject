@@ -36,7 +36,7 @@
                         @Html.DisplayFor(modelItem => item.IsRight)
                     </td>
                     <td>
-                        @Ajax.ActionLink("Edit", "EditQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_answer" })
+                        @Ajax.ActionLink("Edit", "EditQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_answer" }) |
                         @Ajax.ActionLink("Delete", "DeleteQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "details_question_answers", Confirm = "Do you really want to delete this answer?", HttpMethod = "GET" })
                     </td>
                     @*<td>

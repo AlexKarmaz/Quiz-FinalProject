@@ -21,8 +21,8 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
+            @Ajax.ActionLink("Details", "TestDetails", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
         </td>
     </tr>
 }

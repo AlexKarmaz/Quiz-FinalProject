@@ -18,18 +18,18 @@ namespace PLMVC.Controllers
             this.userService = userService;
         }
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name);
-                return View();
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        var user = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name);
+        //        return View();
 
-            }
+        //    }
 
-            return RedirectToAction("Login", "Account");
-        }
+        //    return RedirectToAction("Login", "Account");
+        //}
 
         //public ActionResult Index()
         //{

@@ -24,6 +24,36 @@ namespace PLMVC.Infrastructure.Mappers
             };
         }
 
+        public static EditTestViewModel ToMvcEditTest(this BllTest bllTest)
+        {
+            if (bllTest == null)
+                return null;
+            return new EditTestViewModel()
+            {
+                Title = bllTest.Title,
+                Description = bllTest.Description,
+                TimeLimit = bllTest.TimeLimit,
+                MinToSuccess = bllTest.MinToSuccess,
+                ThemeId = bllTest.ThemeId,
+            };
+        }
+
+        public static BllTest ToBllEditTest(this EditTestViewModel createTestViewModel)
+        {
+            if (createTestViewModel == null)
+                return null;
+            return new BllTest()
+            {
+                Title = createTestViewModel.Title,
+                Description = createTestViewModel.Description,
+                TimeLimit = createTestViewModel.TimeLimit,
+                MinToSuccess = createTestViewModel.MinToSuccess,
+                ThemeId = createTestViewModel.ThemeId,
+                Questions = new List<BllQuestion>(),
+                TestResults = new List<BllTestResult>()
+            };
+        }
+
         public static DetailsTestViewModel ToMvcTest(this BllTest bllTest)
         {
             if (bllTest == null)
@@ -47,6 +77,7 @@ namespace PLMVC.Infrastructure.Mappers
                 return null;
             return new ShowTestsViewModel()
             {
+                Id = bllTest.Id,
                 Title = bllTest.Title,
                 Description = bllTest.Description,
             };

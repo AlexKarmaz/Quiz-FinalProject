@@ -5,10 +5,12 @@ using System.Web;
 
 namespace PLMVC.Models.Test
 {
-    public class ShowTestsViewModel
+    public class EditTestViewModel
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public TimeSpan TimeLimit { get; set; }
+        public double MinToSuccess { get; set; }
+        public int ThemeId { get; set; }
     }
 }

@@ -45,7 +45,6 @@ namespace PLMVC.Controllers
             if (ModelState.IsValid)
             {
                 int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
-               // model.ThemeId = 1;// ВЫБИРАТЬ НА ВЬЮХЕ 
                 model.Questions = new List<QuestionViewModel>();
                 var test = model.ToBllTest();
                 test.DateCreation = DateTime.Now;
@@ -55,21 +54,21 @@ namespace PLMVC.Controllers
                 if (Request.IsAjaxRequest())
                 {
                  int testId = testService.GetOneByPredicate(t => t.Title == model.Title).Id;
-                 return RedirectToAction("TestDetails","Test", new { id = testId }); 
+                 return RedirectToAction("TestDetails","Test", new { testId = testId }); 
                 }
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Url.Action("ShowLastTests", "Test"));
             }
-            return PartialView("CreateTest");
+            return PartialView("_CreateTest");
         }
 
         [HttpGet]
-        public ActionResult TestDetails(int? id)
+        public ActionResult TestDetails(int? testId)
         {
-            if (id == null)
+            if (testId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var bllTest = testService.GetOneByPredicate(t=>t.Id == id);
+            var bllTest = testService.GetOneByPredicate(t=>t.Id == testId);
             string userName = userService.GetOneByPredicate(u => u.Id == bllTest.UserId).UserName;
             string themeName = themeService.GetOneByPredicate(t => t.Id == bllTest.ThemeId).Name;
             var mvcTest = bllTest.ToMvcTest();
@@ -103,6 +102,40 @@ namespace PLMVC.Controllers
             if (Request.IsAjaxRequest())
                 return PartialView("_ShowTestsByTheme", mvcTests);
             return View("_ShowTestsByTheme", mvcTests);
+        }
+
+        [HttpGet]
+        public ActionResult EditTest(int? testId)
+        {
+            if (testId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var test = testService.GetOneByPredicate(t => t.Id == testId);
+            var mvcTest = test.ToMvcEditTest();
+            SelectList themes = new SelectList(themeService.GetAll(), "Id", "Name");
+            ViewBag.TestId = testId;
+            ViewBag.Themes = themes;
+            if (Request.IsAjaxRequest())
+                return PartialView("_EditTest", mvcTest);
+            return View("_EditTest", mvcTest);
+        }
+
+        [HttpPost]
+        public ActionResult EditTest(EditTestViewModel model, int? testId)
+        {
+            if (model == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (ModelState.IsValid)
+            {
+                var bllTest = model.ToBllEditTest();
+                bllTest.Id = Convert.ToInt32(testId);
+                testService.Update(bllTest);
+                return RedirectToAction("TestDetails", "Test", new { testId = testId });
+            }
+            return RedirectToAction("EditTest", "Test", new { testId = testId });
         }
     }
 }

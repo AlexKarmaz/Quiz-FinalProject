@@ -61,8 +61,7 @@ namespace DAL.Concrete.Repositories
                 testToUpdate.Description = ormTest.Description;
                 testToUpdate.ThemeId = ormTest.ThemeId;
                 testToUpdate.TimeLimit = ormTest.TimeLimit;
-                testToUpdate.TestResults = ormTest.TestResults;
-                testToUpdate.Questions = ormTest.Questions;
+                testToUpdate.MinToSuccess = ormTest.MinToSuccess;
                 testToUpdate.MinToSuccess = ormTest.MinToSuccess;
                 context.Entry(testToUpdate).State = System.Data.Entity.EntityState.Modified;
             }
