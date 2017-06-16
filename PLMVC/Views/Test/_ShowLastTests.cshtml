@@ -36,7 +36,8 @@
         </td>
         <td>
            @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
-           @Ajax.ActionLink("Details", "TestDetails","Test" , new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
+           @Ajax.ActionLink("Details", "TestDetails","Test" , new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
+           @Ajax.ActionLink("Delete", "DeleteTestFromAllUsers", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET",Confirm = "Do you really want to delete this test?" })
         </td>
     </tr>
 }

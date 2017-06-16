@@ -137,5 +137,19 @@ namespace PLMVC.Controllers
             }
             return RedirectToAction("EditTest", "Test", new { testId = testId });
         }
+
+        
+        public void DeleteTest(int testId)
+        {
+            var test = testService.GetOneByPredicate(t => t.Id == testId);
+            testService.Delete(test);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteTestFromAllUsers(int testId)
+        {
+            DeleteTest(testId);
+            return RedirectToAction("ShowLastTests");
+        }
     }
 }

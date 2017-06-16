@@ -8,8 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
@@ -17,11 +15,13 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ITestRepository testRepository;
+        private readonly IQuestionRepository questionRepositiry;
 
-        public TestService(IUnitOfWork unitOfWork, ITestRepository testRepository)
+        public TestService(IUnitOfWork unitOfWork, ITestRepository testRepository, IQuestionRepository questionRepositiry)
         {
             this.unitOfWork = unitOfWork;
             this.testRepository = testRepository;
+            this.questionRepositiry = questionRepositiry;
         }
 
         public IEnumerable<BllTest> GetAll()
@@ -46,6 +46,7 @@ namespace BLL.Services
         public void Delete(BllTest entity)
         {
             testRepository.Delete(entity.ToDalTest());
+            DeleteTestQuestions(entity.Id);
             unitOfWork.Commit();
         }
 
@@ -65,6 +66,17 @@ namespace BLL.Services
             var visitor = new PredicateExpressionVisitor<BllTest, DalTest>(Expression.Parameter(typeof(DalTest), predicates.Parameters[0].Name));
             var exp = Expression.Lambda<Func<DalTest, bool>>(visitor.Visit(predicates.Body), visitor.NewParameter);
             return testRepository.GetAllByPredicate(exp).Select(test => test.ToBllTest()).ToList();
+        }
+
+        public void DeleteTestQuestions(int testId)
+        {
+            var questions = questionRepositiry.GetAllByPredicate(q => q.TestId == testId).ToList();
+            foreach(var question in questions)
+            {
+                questionRepositiry.Delete(question);
+               // questions.Remove(question);
+            }
+
         }
     }
 }
