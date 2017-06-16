@@ -64,12 +64,20 @@ namespace PLMVC.Controllers
         [HttpGet]
         public ActionResult TestDetails(int? testId)
         {
+            string userName;
             if (testId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var bllTest = testService.GetOneByPredicate(t=>t.Id == testId);
-            string userName = userService.GetOneByPredicate(u => u.Id == bllTest.UserId).UserName;
+            try
+            {
+                userName = userService.GetOneByPredicate(u => u.Id == bllTest.UserId).UserName;
+            }
+            catch(Exception ex)
+            {
+                userName = "Creator was deleted";
+            }
             string themeName = themeService.GetOneByPredicate(t => t.Id == bllTest.ThemeId).Name;
             var mvcTest = bllTest.ToMvcTest();
             mvcTest.UserName = userName;
@@ -150,6 +158,22 @@ namespace PLMVC.Controllers
         {
             DeleteTest(testId);
             return RedirectToAction("ShowLastTests");
+        }
+
+        [HttpGet]
+        public ActionResult SearchTest(string searchString)
+        {
+            if (searchString == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            searchString = searchString.ToLower();
+            var tests = testService.Search(searchString);
+            var mvcTests = tests.Select(t => t.ToMvcAllTests());
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Search", mvcTests);
+            return View("_Search", mvcTests);
         }
     }
 }

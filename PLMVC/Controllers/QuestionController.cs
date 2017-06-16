@@ -106,8 +106,8 @@ namespace PLMVC.Controllers
             }
             if (ModelState.IsValid)
             {
-                var bllAnswers = questionService.GetOneByPredicate(a => a.Id == model.Id).Answers;
-                model.Answers = bllAnswers.Select(a => a.ToMvcAnswer()).ToList();
+               // var bllAnswers = questionService.GetOneByPredicate(a => a.Id == model.Id).Answers;
+                model.Answers = new List<AnswerViewModel>();
                 var bllQuestion = model.ToBllQuestion();
                 questionService.Update(bllQuestion);
             }

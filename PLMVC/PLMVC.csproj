@@ -272,6 +272,7 @@
     <Content Include="Views\Test\_ShowTestsByTheme.cshtml" />
     <Content Include="Views\Test\_EditTest.cshtml" />
     <Content Include="Views\Account\_ShowAllUsers.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

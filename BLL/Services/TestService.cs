@@ -74,9 +74,23 @@ namespace BLL.Services
             foreach(var question in questions)
             {
                 questionRepositiry.Delete(question);
-               // questions.Remove(question);
             }
+        }
 
+        public IEnumerable<BllTest> Search(string searchString)
+        {
+            List<DalTest> dalTests; 
+            dalTests =  testRepository.GetAllByPredicate(t => t.Title.ToLower().Contains(searchString)).ToList();
+            var dalTestsByDescription = testRepository.GetAllByPredicate(t => t.Description.ToLower().Contains(searchString)).ToList();
+         
+            if (dalTests.Count() < dalTestsByDescription.Count())
+            {
+                dalTests = dalTestsByDescription.Union(dalTests).ToList();
+            }else
+            {
+                dalTests.Union(dalTestsByDescription);
+            }
+            return dalTests.Select(t => t.ToBllTest());
         }
     }
 }

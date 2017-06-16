@@ -62,7 +62,6 @@ namespace DAL.Concrete.Repositories
                 var ormQuestion = entity.ToOrmQuestion();
                 context.Set<Question>().Attach(questionToUpdate);
                 questionToUpdate.Text = ormQuestion.Text;
-                questionToUpdate.Answers = ormQuestion.Answers;
                 context.Entry(questionToUpdate).State = System.Data.Entity.EntityState.Modified;
             }
         }

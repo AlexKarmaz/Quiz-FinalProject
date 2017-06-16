@@ -10,5 +10,6 @@ namespace BLL.Interface.Interfaces
     public interface ITestService : IService<BllTest>
     {
         void DeleteTestQuestions(int testId);
+        IEnumerable<BllTest> Search(string text);
     }
 }

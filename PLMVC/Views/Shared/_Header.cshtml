@@ -22,29 +22,28 @@
             }
         </ul>
         <ul class="nav navbar-nav navbar-right text-center">
-            @*@if (User.Identity.IsAuthenticated)
-            {
+           @if (User.Identity.IsAuthenticated)
+           {
                 <li>
-                    @Ajax.ActionLinkWithGlyphicon("fa fa-search", "Search", "Search", "Profile", new AjaxOptions
-                   {
-
-                       UpdateTargetId = "main_container",
-                       InsertionMode = InsertionMode.Replace,
-                       LoadingElementId = "loading",
-                       AllowCache = false,
-                       OnBegin = "hideContent",
-                       OnComplete = "unhideContent"
-
-                   })
+              @using (Ajax.BeginForm("SearchTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }))
+              {
+                    <div>
+                        <p>
+                            <input type="search" name="searchString" placeholder="Test search...">
+                            <button class="glyphicon glyphicon-search">@*@Ajax.ActionLink("", "SearchTest","Test",new { text = SearchString })*@</button>
+                        </p>
+                    </div>
+              }
                 </li>
-            }*@
-            <li class="navbar-create">
-                @Ajax.ActionLink("Manage", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
-            </li>
-            <li>
-                @Html.Partial("_LoginMenu")
-            </li>
-        </ul>
+
+                <li class="navbar-create">
+                    @Ajax.ActionLink("Manage", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
+                </li>
+           }
+                <li>
+                    @Html.Partial("_LoginMenu")
+                </li>
+</ul>
     </div>
 </nav>
 
