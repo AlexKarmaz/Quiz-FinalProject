@@ -6,5 +6,6 @@ namespace DAL.Interface.Interfaces
     public interface IProfileRepository : IRepository<DalProfile>
     {
         void UpdateUserId(DalProfile entity, int id);
+        void DeleteTestReference(int userId);
     }
 }

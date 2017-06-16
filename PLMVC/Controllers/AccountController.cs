@@ -99,16 +99,28 @@ namespace PLMVC.Controllers
             foreach (var mvcUser in mvcUsers)
             {
                 roles = userService.GetRolesForUser(mvcUser.UserName);
-                // mvcUser.RoleNames = userService.GetRolesForUser(mvcUser.UserName).ToList();
-              //  mvcUser = new ShowUsersViewModel { Id = mvcUser.Id, Email = mvcUser.Email, UserName = mvcUser.UserName, RoleNames = string.Join(",", roles) };
                 mvcUser.RoleNames = string.Join(",", roles);
                 newUsers[i] = new ShowUsersViewModel { Id = mvcUser.Id, Email = mvcUser.Email, UserName = mvcUser.UserName, RoleNames = string.Join(",", roles) };
                 i++;
             }
-          //  ViewBag.Roles = mvcUsers.Select(u => u.RoleNames = userService.GetRolesForUser(u.UserName));
             if (Request.IsAjaxRequest())
                 return PartialView("_ShowAllUsers",newUsers);
             return View("_ShowAllUsers",mvcUsers);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DeleteUser(int userId)
+        {
+            var userToDelete = userService.GetById(userId);
+            userService.Delete(userToDelete);
+
+            profileService.DeleteTestReference(userId);
+
+            var userProfile = profileService.GetById(userId);
+            profileService.Delete(userProfile);
+
+            return RedirectToAction("GetAllUsers");
         }
     }
 }

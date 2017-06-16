@@ -39,7 +39,7 @@
                 </li>
             }*@
             <li class="navbar-create">
-                @Ajax.ActionLink("Admin", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
+                @Ajax.ActionLink("Manage", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
             </li>
             <li>
                 @Html.Partial("_LoginMenu")

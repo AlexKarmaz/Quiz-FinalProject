@@ -10,5 +10,6 @@ namespace BLL.Interface.Interfaces
     public interface IProfileService : IService<BllProfile>
     {
         void UpdateUserId(BllProfile entity, int id);
+        void DeleteTestReference(int userId);
     }
 }

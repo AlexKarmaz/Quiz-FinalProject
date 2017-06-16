@@ -71,5 +71,10 @@ namespace BLL.Services
             var exp = Expression.Lambda<Func<DalProfile, bool>>(visitor.Visit(predicates.Body), visitor.NewParameter);
             return profileRepository.GetAllByPredicate(exp).Select(profile => profile.ToBllProfile()).ToList();
         }
+
+        public void DeleteTestReference(int userId)
+        {
+            profileRepository.DeleteTestReference(userId);
+        }
     }
 }

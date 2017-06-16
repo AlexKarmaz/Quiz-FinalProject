@@ -67,8 +67,18 @@ namespace DAL.Concrete.Repositories
             var profileToUpdate = context.Set<Profile>().FirstOrDefault(u => u.Id == entity.Id);
             context.Set<Profile>().Attach(profileToUpdate);
             profileToUpdate.UserId = id;
-            context.Entry(profileToUpdate).State = System.Data.Entity.EntityState.Modified;           
+            context.Entry(profileToUpdate).State = System.Data.Entity.EntityState.Modified;
         }
+
+        public void DeleteTestReference(int userId)
+        {
+            var profile = context.Set<Profile>().FirstOrDefault(p => p.UserId == userId);
+            context.Set<Profile>().Attach(profile);
+            profile.PassedTests.Clear();
+            profile.CreatedTests.Clear();
+            context.Entry(profile).State = System.Data.Entity.EntityState.Modified;
+        }
+            
 
     }
 }

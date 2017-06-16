@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<PLMVC.Models.User.ShowUsersViewModel>
-
+<h2>Manage users</h2>
 <p>
     @Ajax.ActionLink("Create user", "Register", "Account",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
 </p>
@@ -34,7 +34,7 @@
             @string.Join(",", item.RoleNames)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Ajax.ActionLink("Delete", "DeleteUser","Account", new { userId = item.Id },new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this user?" })
         </td>
     </tr>
 }
