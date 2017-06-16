@@ -82,5 +82,18 @@ namespace PLMVC.Infrastructure.Mappers
                 Description = bllTest.Description,
             };
         }
+
+        public static PreviewTestViewModel ToMvcPreviewTest(this BllTest bllTest)
+        {
+            if (bllTest == null)
+                return null;
+            return new PreviewTestViewModel()
+            {
+                Id = bllTest.Id,
+                Title = bllTest.Title,
+                TimeLimit = bllTest.TimeLimit,
+                MinToSuccess = bllTest.MinToSuccess
+            };
+        }
     }
 }

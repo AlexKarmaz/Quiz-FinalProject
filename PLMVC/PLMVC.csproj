@@ -172,6 +172,7 @@
     <Compile Include="Models\Test\CreateTestViewModel.cs" />
     <Compile Include="Models\Test\DetailsTestViewModel.cs" />
     <Compile Include="Models\Test\EditTestViewModel.cs" />
+    <Compile Include="Models\Test\PreviewTestViewModel.cs" />
     <Compile Include="Models\Test\ShowTestsViewModel.cs" />
     <Compile Include="Models\Test\TestViewModel.cs" />
     <Compile Include="Models\Theme\ThemeViewModel.cs" />
@@ -188,6 +189,7 @@
     <Content Include="App_Data\TestEntitiesDB_log.ldf">
       <DependentUpon>TestEntitiesDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Advertising\advertising.jpg" />
     <Content Include="Content\bootstrap-social.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -273,6 +275,8 @@
     <Content Include="Views\Test\_EditTest.cshtml" />
     <Content Include="Views\Account\_ShowAllUsers.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Test\_Preview.cshtml" />
+    <Content Include="Views\Shared\_Advertising.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

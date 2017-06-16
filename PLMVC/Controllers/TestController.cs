@@ -175,5 +175,24 @@ namespace PLMVC.Controllers
                 return PartialView("_Search", mvcTests);
             return View("_Search", mvcTests);
         }
+
+        [HttpGet]
+        public ActionResult Preview(int testId)
+        {
+            var test = testService.GetById(testId);
+            var mvcTest = test.ToMvcPreviewTest();
+            //ViewBag.TimeLimit = test.TimeLimit;
+            //ViewBag.MinToSuccess = test.MinToSuccess;
+            //ViewBag.Title = test.Title;
+            if (Request.IsAjaxRequest())
+                return PartialView("_Preview", mvcTest);
+            return View("_Preview", mvcTest);
+        }
+
+        [HttpGet]
+        public ActionResult StartTest(int testId)
+        {
+            return RedirectToAction("Preview", new { testId = testId });
+        }
     }
 }
