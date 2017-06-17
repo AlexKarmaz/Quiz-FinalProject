@@ -7,7 +7,8 @@
 
 <div class="jumbotron">
     <h1>@Model.Title</h1>
-    <p>If you want to successfully pass this test, then you must meet on time @Model.TimeLimit and answer @Model.MinToSuccess% of the questions correctly.</p>
+    @*<p>If you want to successfully pass this test, then you must meet on time @Model.TimeLimit and answer @Model.MinToSuccess% of the questions correctly.</p>*@
+    <p>To pass the test successfully you are to give @Model.MinToSuccess% correct answers up to @Model.TimeLimit.</p> 
     <p>Good luck:)</p>
     <p><a class="btn btn-primary btn-lg" href="@Url.Action("StartTest", "Test", new {testId = Model.Id})">Start</a></p>
 </div>

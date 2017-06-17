@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<PLMVC.Models.User.ShowUsersViewModel>
 <h2>Manage users</h2>
+<hr />
 <p>
     @Ajax.ActionLink("Create user", "Register", "Account",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
 </p>

@@ -1,6 +1,7 @@
 ﻿@model PLMVC.Models.Question.QuestionViewModel
 
 <div id="detail_one_question">
+    <hr />
     <h4>Question details</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -19,7 +20,7 @@
         </dd>
     </dl>
 </div>
-<hr />
+
 <div id="details_question_answers">
     @Ajax.ActionLink("Show answers", "DetailsQuestionAnswers", "Answer", new { questionId = Model.Id}, new AjaxOptions { UpdateTargetId = "details_question_answers", HttpMethod = "GET" })
 </div>

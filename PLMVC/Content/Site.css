@@ -90,3 +90,11 @@ textarea {
 .edit-question-save{
     display: flex;
 }
+
+.create-test-question{
+    display: flex;
+}
+
+.advertising-image{
+    width: 150px;
+}
