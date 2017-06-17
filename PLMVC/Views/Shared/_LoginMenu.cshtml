@@ -8,8 +8,6 @@
            <li class="dropdown-list">
                @Ajax.ActionLinkWithGlyphicon("glyphicon glyphicon-home", "Profile", "Index", "Profile", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
             </li>
-            @*<li class="divider"></li>
-            <li><a href="@Url.Action("Edit", "Profile", new { name = User.Identity.Name })"><i class="glyphicon glyphicon-edit"></i>Edit Profile</a></li>*@
             <li class="divider"></li>
             <li><a href="@Url.Action("LogOff", "Account")"><i class="glyphicon glyphicon-log-out"></i>Exit</a></li>
         </ul>

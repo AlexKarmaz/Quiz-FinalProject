@@ -192,6 +192,8 @@ namespace PLMVC.Controllers
         [HttpGet]
         public ActionResult StartTest(int testId)
         {
+            var questions = testService.GetById(testId).Questions;
+
             return RedirectToAction("Preview", new { testId = testId });
         }
     }

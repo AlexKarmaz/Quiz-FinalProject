@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnswerController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -198,6 +199,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\httpErrors\error.png" />
+    <Content Include="Content\httpErrors\pageNotFound.jpg" />
+    <Content Include="Content\httpErrors\serverError.jpg" />
     <Content Include="Content\Loading\1.gif" />
     <Content Include="Content\Loading\4.gif" />
     <Content Include="favicon.ico" />
@@ -278,6 +282,9 @@
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Test\_Preview.cshtml" />
     <Content Include="Views\Shared\_Advertising.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />
