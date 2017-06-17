@@ -69,3 +69,24 @@ textarea {
 .dropdown-input {
     color: black;
 }
+
+.advertising{
+    margin-top: 22px;
+    margin-left: 6px;
+}
+
+.search-sumbl{
+    color: white;
+}
+
+.search{
+    margin-top: 19px;
+}
+
+.start-test-link{
+    color:orange;
+}
+
+.edit-question-save{
+    display: flex;
+}

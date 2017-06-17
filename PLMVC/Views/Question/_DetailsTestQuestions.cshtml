@@ -19,9 +19,6 @@
             </th>
             <th>
             </th>
-            @*<th>
-            </th>*@
-
          </tr>
         @foreach (var item in Model)
         {
@@ -40,6 +37,7 @@
         }
      </table>
     }
+    <hr />
     @Ajax.ActionLink("Add question", "CreateTestQuestion", "Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "GET" })
 <div id="work_with_question">
 

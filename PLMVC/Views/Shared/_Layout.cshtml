@@ -16,24 +16,28 @@
 
 </head>
 <body>
-    @Html.Partial("_Header")
-    <div class="container layout_container">
-        <div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 pull-right container jumbotron">
+    <div class="row">
+        @Html.Partial("_Header")
+    </div>
+    <div class="row">
+        <div class="col-lg-2 text-center">
+            @Html.Partial("_Advertising")
+        </div>
+        <div class="col-lg-9 jumbotron">
             <div id="loading" style="display:none;" align="center">
                 @*@Html.Partial("_Loading")*@<img src="@Url.Content("~/Content/Loading/4.gif")" />
             </div>
             <div id="main_container">
                 @*<div id="loading" style="display:none;">
-                    @Html.Partial("_Loading")
-                </div>*@
+                        @Html.Partial("_Loading")
+                    </div>*@
                 @RenderBody()
             </div>
         </div>
-        <div class="col-xs-12 col-sm-2 col-md-1 col-lg-1 text-center">
-            @Html.Partial("_Advertising")
+        <div class="col-lg-1 text-center">
         </div>
     </div>
-    <footer>
+    <footer class="row">
         <div class="copyright">
             <div class="copyright-content">&copy; @DateTime.Now.Year - by Alex Karmaz</div>
             <div class="copyright-content social">

@@ -27,10 +27,10 @@
                 <li>
               @using (Ajax.BeginForm("SearchTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }))
               {
-                    <div>
+                    <div class="search">
                         <p>
                             <input type="search" name="searchString" placeholder="Test search...">
-                            <button class="glyphicon glyphicon-search">@*@Ajax.ActionLink("", "SearchTest","Test",new { text = SearchString })*@</button>
+                            <a class="glyphicon glyphicon-search search-sumbl"></a>
                         </p>
                     </div>
               }

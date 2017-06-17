@@ -14,14 +14,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Text)
+            @Html.DisplayFor(model => model.Text) 
+            @Ajax.ActionLink("Edit", "EditTestQuestion", new { questionId = Model.Id }, new AjaxOptions { UpdateTargetId = "detail_one_question", HttpMethod = "GET" })
         </dd>
-
     </dl>
-    <p>
-        @Ajax.ActionLink("Edit", "EditTestQuestion", new { questionId = Model.Id }, new AjaxOptions { UpdateTargetId = "detail_one_question", HttpMethod = "GET" })
-    </p>
 </div>
+<hr />
 <div id="details_question_answers">
     @Ajax.ActionLink("Show answers", "DetailsQuestionAnswers", "Answer", new { questionId = Model.Id}, new AjaxOptions { UpdateTargetId = "details_question_answers", HttpMethod = "GET" })
 </div>
