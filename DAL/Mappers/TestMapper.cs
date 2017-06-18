@@ -13,7 +13,7 @@ namespace DAL.Mappers
         public static DalTest ToDalTest(this Test ormTest)
         {
             if (ormTest == null)
-                return null;
+                throw new ArgumentNullException(nameof(ormTest));
             var dalTest = new DalTest()
             {
                 Id = ormTest.Id,
@@ -33,7 +33,7 @@ namespace DAL.Mappers
         public static Test ToOrmTest(this DalTest dalTest)
         {
             if (dalTest == null)
-                return null;
+                throw new ArgumentNullException(nameof(dalTest));
             var ormTest = new Test()
             {
                 Id = dalTest.Id,

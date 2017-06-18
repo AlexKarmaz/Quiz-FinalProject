@@ -13,7 +13,7 @@ namespace BLL.Mappers
         public static DalTestResult ToDalTestResult(this BllTestResult bllTestResult)
         {
             if (bllTestResult == null)
-                return null;
+                throw new ArgumentNullException(nameof(bllTestResult));
             var dalTestResult = new DalTestResult()
             {
                 Id = bllTestResult.Id,
@@ -30,7 +30,7 @@ namespace BLL.Mappers
         public static BllTestResult ToBllTestResult(this DalTestResult dalTestResult)
         {
             if (dalTestResult == null)
-                return null;
+                throw new ArgumentNullException(nameof(dalTestResult));
             var bllTestResult = new BllTestResult()
             {
                 Id = dalTestResult.Id,

@@ -12,7 +12,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static BllQuestion ToBllQuestion(this QuestionViewModel mvcQuestion)
         {
             if (mvcQuestion == null)
-                return null;
+                throw new ArgumentNullException(nameof(mvcQuestion));
             var bllQuestion = new BllQuestion()
             {
                 Id = mvcQuestion.Id,
@@ -27,7 +27,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static QuestionViewModel ToMvcQuestion(this BllQuestion bllQuestion)
         {
             if (bllQuestion == null)
-                return null;
+                throw new ArgumentNullException(nameof(bllQuestion));
             var mvcQuestion = new QuestionViewModel()
             {
                 Id = bllQuestion.Id,

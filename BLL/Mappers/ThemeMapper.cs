@@ -13,7 +13,7 @@ namespace BLL.Mappers
         public static DalTheme ToDalTheme(this BllTheme bllTheme)
         {
             if (bllTheme == null)
-                return null;
+                throw new ArgumentNullException(nameof(bllTheme));
             var dalTheme = new DalTheme()
             {
                 Id = bllTheme.Id,
@@ -25,7 +25,7 @@ namespace BLL.Mappers
         public static BllTheme ToBllTheme(this DalTheme dalTheme)
         {
             if (dalTheme == null)
-                return null;
+                throw new ArgumentNullException(nameof(dalTheme));
             var bllTheme = new BllTheme()
             {
                 Id = dalTheme.Id,

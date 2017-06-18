@@ -13,7 +13,7 @@ namespace DAL.Mappers
         public static DalQuestion ToDalQuestion(this Question ormQuestion)
         {
             if (ormQuestion == null)
-                return null;
+                throw new ArgumentNullException(nameof(ormQuestion));
             var dalQuestion = new DalQuestion()
             {
                 Id = ormQuestion.Id,
@@ -28,7 +28,7 @@ namespace DAL.Mappers
         public static Question ToOrmQuestion(this DalQuestion dalQuestion)
         {
             if (dalQuestion == null)
-                return null;
+                throw new ArgumentNullException(nameof(dalQuestion));
             var ormQuestion = new Question()
             {
                 Id = dalQuestion.Id,

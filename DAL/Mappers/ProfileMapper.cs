@@ -13,7 +13,7 @@ namespace DAL.Mappers
         public static DalProfile ToDalProfile(this Profile ormProfile)
         {
             if (ormProfile == null)
-                return null;
+                throw new ArgumentNullException(nameof(ormProfile));
             return new DalProfile()
             {
                 Id = ormProfile.Id,
@@ -26,7 +26,7 @@ namespace DAL.Mappers
         public static Profile ToOrmProfile(this DalProfile dalProfile)
         {
             if (dalProfile == null)
-                return null;
+                throw new ArgumentNullException(nameof(dalProfile));
             return new Profile()
             {
                 Id = dalProfile.Id,
