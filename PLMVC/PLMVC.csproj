@@ -173,6 +173,7 @@
     <Compile Include="Models\Test\CreateTestViewModel.cs" />
     <Compile Include="Models\Test\DetailsTestViewModel.cs" />
     <Compile Include="Models\Test\EditTestViewModel.cs" />
+    <Compile Include="Models\Test\PassingTestViewModel.cs" />
     <Compile Include="Models\Test\PreviewTestViewModel.cs" />
     <Compile Include="Models\Test\ShowTestsViewModel.cs" />
     <Compile Include="Models\Test\TestViewModel.cs" />
@@ -285,6 +286,7 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Test\_PassingTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profile\" />

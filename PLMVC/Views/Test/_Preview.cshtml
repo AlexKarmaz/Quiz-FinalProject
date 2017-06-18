@@ -4,5 +4,5 @@
     <h1>@Model.Title</h1>
     <p>To pass the test successfully you are to give @Model.MinToSuccess% correct answers up to @Model.TimeLimit.</p> 
     <p>Good luck:)</p>
-    <p><a class="btn btn-primary btn-lg" href="@Url.Action("StartTest", "Test", new {testId = Model.Id})">Start</a></p>
+    @Ajax.ActionLink("Start","PassingTest", "Test", new {testId = Model.Id},new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "btn btn-primary btn-lg" })
 </div>

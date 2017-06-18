@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PLMVC.Models.Question;
 using BLL.Interface.Entities;
 using System.Net;
+using System.Diagnostics;
 
 namespace PLMVC.Controllers
 {
@@ -179,6 +180,7 @@ namespace PLMVC.Controllers
         [HttpGet]
         public ActionResult Preview(int testId)
         {
+            
             var test = testService.GetById(testId);
             var mvcTest = test.ToMvcPreviewTest();
             //ViewBag.TimeLimit = test.TimeLimit;
@@ -190,11 +192,34 @@ namespace PLMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult StartTest(int testId)
+        public ActionResult PassingTest(int? testId)
         {
-            var questions = testService.GetById(testId).Questions;
-
-            return RedirectToAction("Preview", new { testId = testId });
+            if (testId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var test = testService.GetById(Convert.ToInt32(testId));
+            var passingTest = test.ToMvcPassingTest();
+            passingTest.StartTest = DateTime.Now;
+            passingTest.Results = new bool[passingTest.Questions.Count][];
+            for(int i = 0; i < passingTest.Questions.Count; i++)
+            {
+                passingTest.Results[i] = new bool[passingTest.Questions[i].Answers.Count];
+            }
+            if (Request.IsAjaxRequest())
+                return PartialView("_PassingTest", passingTest);
+            return View("_PassingTest", passingTest);
         }
+
+        [HttpPost]
+        public ActionResult PassingTest(PassingTestViewModel model)
+        {
+            model.FinishTest = DateTime.Now;
+            //var test = testService.GetById(testId);
+            //var passingTest = test.ToMvcPassingTest();
+
+            return RedirectToAction("Preview", new { testId = model.Id });
+        }
+
     }
 }

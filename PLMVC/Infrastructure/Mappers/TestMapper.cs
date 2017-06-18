@@ -38,6 +38,18 @@ namespace PLMVC.Infrastructure.Mappers
             };
         }
 
+        public static PassingTestViewModel ToMvcPassingTest(this BllTest bllTest)
+        {
+            if (bllTest == null)
+                return null;
+            return new PassingTestViewModel()
+            {
+                Id = bllTest.Id,
+                Title = bllTest.Title,
+                Questions = bllTest.Questions.Select(q => q.ToMvcQuestion()).ToList()
+            };
+        }
+
         public static BllTest ToBllEditTest(this EditTestViewModel createTestViewModel)
         {
             if (createTestViewModel == null)
