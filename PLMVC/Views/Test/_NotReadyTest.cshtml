@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Not ready ";
+}
+<div align="center">
+    <hgroup class="title">
+        <h1 class="error">Sorry.The test is not ready. Try again!</h1>
+    </hgroup>
+
+    <img src="~/Content/Img/Under-construction.png" alt="Not found" width="600" height="400">
+</div>
+
+@Ajax.ActionLink("Back", "ShowLastTests", "Test", new AjaxOptions
+{
+    UpdateTargetId = "main_container",
+    LoadingElementId = "loading",
+    HttpMethod = "GET" }, new { @class = "btn btn-default btn-lg" })

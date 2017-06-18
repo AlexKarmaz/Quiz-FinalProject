@@ -117,5 +117,22 @@ namespace BLL.Services
             }
             return results;
         }
+
+        public bool IsTestReady (int testId)
+        {
+            var test = testRepository.GetById(testId);
+            bool isReady = true;
+            if(test.Questions.Count < 1)
+                return  false;
+            foreach(var question in test.Questions)
+            {
+                if(question.Answers.Count < 1)
+                {
+                    isReady = false;
+                    break;
+                }
+            }
+            return isReady;
+        }
     }
 }

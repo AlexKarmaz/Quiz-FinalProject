@@ -9,6 +9,8 @@ namespace BLL.Interface.Interfaces
 {
     public interface ITestResultService : IService<BllTestResult>
     {
-        bool IsSuccessResult(IEnumerable<bool> results);
+        bool CheckTime(TimeSpan timeLimit, TimeSpan userTime);
+        bool CheckPercentAnswers(IEnumerable<bool> results, double minToSuccess);
+        double GetPercentGoodAnswers(IEnumerable<bool> results);
     }
 }

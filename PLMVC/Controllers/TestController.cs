@@ -185,15 +185,20 @@ namespace PLMVC.Controllers
         [HttpGet]
         public ActionResult Preview(int testId)
         {
-            
+            bool isReady = testService.IsTestReady(testId);
             var test = testService.GetById(testId);
             var mvcTest = test.ToMvcPreviewTest();
-            //ViewBag.TimeLimit = test.TimeLimit;
-            //ViewBag.MinToSuccess = test.MinToSuccess;
-            //ViewBag.Title = test.Title;
+
             if (Request.IsAjaxRequest())
-                return PartialView("_Preview", mvcTest);
-            return View("_Preview", mvcTest);
+            {
+                if (isReady)
+                    return PartialView("_Preview", mvcTest);
+                return PartialView("_NotReadyTest");
+            }
+
+            if (isReady)
+                return View("_Preview", mvcTest);
+            return View("_NotReadyTest");
         }
 
         [HttpGet]
@@ -219,10 +224,14 @@ namespace PLMVC.Controllers
         [HttpPost]
         public ActionResult PassingTest(PassingTestViewModel model)
         {
+            bool isSuccess = false;
+            var test = testService.GetById(model.Id);
             int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
             var testResults = testService.CheckAnswers(model.Id, model.Results);
             var runtime = (DateTime.UtcNow - model.StartTest);
-            bool isSuccess = testResultService.IsSuccessResult(testResults);
+
+            if (testResultService.CheckPercentAnswers(testResults, test.MinToSuccess) && testResultService.CheckTime(test.TimeLimit, runtime))
+                isSuccess = true;
             var bllTestResult = new BllTestResult
             {
                 TestId = model.Id,
@@ -233,9 +242,14 @@ namespace PLMVC.Controllers
                 Results = testResults.ToList()
             };
             testResultService.Create(bllTestResult);
-          
 
-            return RedirectToAction("Preview", new { testId = model.Id });
+            var mvcTestResult = bllTestResult.ToMvcStatistics();
+            mvcTestResult.TimeLimit = test.TimeLimit;
+            mvcTestResult.MinToSuccess = test.MinToSuccess;
+            mvcTestResult.PercentCorrectAnswers = testResultService.GetPercentGoodAnswers(testResults);
+            if (Request.IsAjaxRequest())
+                return PartialView("_Statistics", mvcTestResult);
+            return View("_Statistics", mvcTestResult);
         }
 
     }

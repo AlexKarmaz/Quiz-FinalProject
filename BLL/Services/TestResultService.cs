@@ -66,19 +66,35 @@ namespace BLL.Services
             return testResultRepository.GetAllByPredicate(exp).Select(testResult => testResult.ToBllTestResult()).ToList();
         }
 
-        public bool IsSuccessResult( IEnumerable<bool> results)
+        public bool CheckPercentAnswers( IEnumerable<bool> results, double minToSuccess)
         {
             bool isSuccess = true;
-            foreach(bool result in results)
-            {
-                if(result == false)
-                {
-                    isSuccess = false;
-                    break;
-                }
-            }
-            
+            //foreach(bool result in results)
+            //{
+            //    if(result == false)
+            //    {
+            //        isSuccess = false;
+            //        break;
+            //    }
+            //}
+            double goodAnswers = results.Where(r => r == true).Count();
+            double percent = (goodAnswers / results.Count())*100;
+            if (percent < minToSuccess)
+                isSuccess = false;
+
             return isSuccess;
+        }
+
+        public bool CheckTime(TimeSpan timeLimit, TimeSpan userTime)
+        {
+            return userTime <= timeLimit;
+        }
+
+        public double GetPercentGoodAnswers(IEnumerable<bool> results)
+        {
+            double goodAnswers = results.Where(r => r == true).Count();
+         
+            return (goodAnswers / results.Count()) * 100;
         }
     }
 }
