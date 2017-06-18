@@ -65,5 +65,20 @@ namespace BLL.Services
             var exp = Expression.Lambda<Func<DalTestResult, bool>>(visitor.Visit(predicates.Body), visitor.NewParameter);
             return testResultRepository.GetAllByPredicate(exp).Select(testResult => testResult.ToBllTestResult()).ToList();
         }
+
+        public bool IsSuccessResult( IEnumerable<bool> results)
+        {
+            bool isSuccess = true;
+            foreach(bool result in results)
+            {
+                if(result == false)
+                {
+                    isSuccess = false;
+                    break;
+                }
+            }
+            
+            return isSuccess;
+        }
     }
 }

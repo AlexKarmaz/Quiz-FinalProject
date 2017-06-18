@@ -9,5 +9,6 @@ namespace BLL.Interface.Interfaces
 {
     public interface ITestResultService : IService<BllTestResult>
     {
+        bool IsSuccessResult(IEnumerable<bool> results);
     }
 }

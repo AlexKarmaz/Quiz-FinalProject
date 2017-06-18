@@ -64,6 +64,7 @@ namespace DAL.Concrete.Repositories
         {
             var ormUser = entity.ToOrmUser();
             var user = context.Set<User>().FirstOrDefault(u => u.Id == ormUser.Id);
+
             context.Set<User>().Attach(user);
             context.Set<User>().Remove(user);
             context.Entry(user).State = System.Data.Entity.EntityState.Deleted;

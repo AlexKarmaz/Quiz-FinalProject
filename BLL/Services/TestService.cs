@@ -15,13 +15,13 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ITestRepository testRepository;
-        private readonly IQuestionRepository questionRepositiry;
+        private readonly IQuestionRepository questionRepository;
 
-        public TestService(IUnitOfWork unitOfWork, ITestRepository testRepository, IQuestionRepository questionRepositiry)
+        public TestService(IUnitOfWork unitOfWork, ITestRepository testRepository, IQuestionRepository questionRepository)
         {
             this.unitOfWork = unitOfWork;
             this.testRepository = testRepository;
-            this.questionRepositiry = questionRepositiry;
+            this.questionRepository = questionRepository;
         }
 
         public IEnumerable<BllTest> GetAll()
@@ -70,10 +70,10 @@ namespace BLL.Services
 
         public void DeleteTestQuestions(int testId)
         {
-            var questions = questionRepositiry.GetAllByPredicate(q => q.TestId == testId).ToList();
+            var questions = questionRepository.GetAllByPredicate(q => q.TestId == testId).ToList();
             foreach(var question in questions)
             {
-                questionRepositiry.Delete(question);
+                questionRepository.Delete(question);
             }
         }
 
@@ -91,6 +91,31 @@ namespace BLL.Services
                 dalTests.Union(dalTestsByDescription);
             }
             return dalTests.Select(t => t.ToBllTest());
+        }
+
+        public IEnumerable<bool> CheckAnswers(int testId, bool[][] testResults)
+        {
+            var questions = testRepository.GetById(testId).Questions;
+            int i = 0;
+            bool[] results = new bool[questions.Count];
+
+            foreach(var question in questions)
+            {
+                results[i] = true;
+                var answers = question.Answers;
+                int j = 0;
+                foreach(var answer in answers)
+                {
+                    if (testResults[i][j] != answer.IsRight)
+                    {
+                        results[i] = false;
+                        break;
+                    }
+                    j++;
+                }
+                i++;
+            }
+            return results;
         }
     }
 }

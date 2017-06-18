@@ -168,6 +168,11 @@ namespace PLMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            int i = 42;
+            i.ToString();
+            object o = i;
+            o.ToString();
+
             searchString = searchString.ToLower();
             var tests = testService.Search(searchString);
             var mvcTests = tests.Select(t => t.ToMvcAllTests());
@@ -200,23 +205,35 @@ namespace PLMVC.Controllers
             }
             var test = testService.GetById(Convert.ToInt32(testId));
             var passingTest = test.ToMvcPassingTest();
-            passingTest.StartTest = DateTime.Now;
+            passingTest.StartTest = DateTime.UtcNow;
             passingTest.Results = new bool[passingTest.Questions.Count][];
             for(int i = 0; i < passingTest.Questions.Count; i++)
             {
                 passingTest.Results[i] = new bool[passingTest.Questions[i].Answers.Count];
             }
             if (Request.IsAjaxRequest())
-                return PartialView("_PassingTest", passingTest);
+               return PartialView("_PassingTest", passingTest);
             return View("_PassingTest", passingTest);
         }
 
         [HttpPost]
         public ActionResult PassingTest(PassingTestViewModel model)
         {
-            model.FinishTest = DateTime.Now;
-            //var test = testService.GetById(testId);
-            //var passingTest = test.ToMvcPassingTest();
+            int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
+            var testResults = testService.CheckAnswers(model.Id, model.Results);
+            var runtime = (DateTime.UtcNow - model.StartTest);
+            bool isSuccess = testResultService.IsSuccessResult(testResults);
+            var bllTestResult = new BllTestResult
+            {
+                TestId = model.Id,
+                UserId = userId,
+                Runtime = runtime,
+                DateComplete = DateTime.Now,
+                IsSuccess = isSuccess,
+                Results = testResults.ToList()
+            };
+            testResultService.Create(bllTestResult);
+          
 
             return RedirectToAction("Preview", new { testId = model.Id });
         }

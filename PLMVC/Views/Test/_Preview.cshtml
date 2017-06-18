@@ -1,8 +1,18 @@
 ﻿@model PLMVC.Models.Test.PreviewTestViewModel
 
+@*<script>
+    function showFirstQuestion() {
+        var lProp = $("#question-1").prop("display");
+        console.log(lProp);
+        lProp = "block";
+
+    }
+</script>*@
+
 <div class="jumbotron">
     <h1>@Model.Title</h1>
     <p>To pass the test successfully you are to give @Model.MinToSuccess% correct answers up to @Model.TimeLimit.</p> 
     <p>Good luck:)</p>
-    @Ajax.ActionLink("Start","PassingTest", "Test", new {testId = Model.Id},new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "btn btn-primary btn-lg" })
+    @Ajax.ActionLink("Start","PassingTest", "Test", new {testId = Model.Id},new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"@*, OnSuccess = "showFirstQuestion"*@ }, new {@class = "btn btn-primary btn-lg" })
 </div>
+

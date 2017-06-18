@@ -4,48 +4,67 @@
 @Scripts.Render("~/bundles/jqueryval")
 
 
-@using (Ajax.BeginForm("PassingTest", "Test",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
+@using (Ajax.BeginForm("PassingTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h2>Test: @Model.Title</h2>
         <hr />
         @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model=>model.StartTest)
+        @Html.HiddenFor(model => model.StartTest)
         @Html.HiddenFor(model => model.FinishTest)
-        @Html.HiddenFor(model => model.Results)
+        @Html.HiddenFor(model => model.Questions)
+        @*@Html.HiddenFor(model => model.Results)*@
 
         @for (int i = 0; i < Model.Questions.Count; i++)
         {
-            int k = ++i;
-            --i;
-            <h3>Question @k</h3>
-            <h3>@Model.Questions[i].Text</h3>
-            <table class="table">
+            int k = i + 1;
+            <div @*style="display:none"*@ id="question-@k">
+                <h3>Question @k</h3>
+                <h3 >@Model.Questions[i].Text</h3>
+                <table class="table">
                     <tr>
                         <th></th>
                         <th></th>
                     </tr>
-                @{int j = 0;}
-                @foreach(var answer in @Model.Questions[i].Answers)
-                {
-                    <tr>
-                        <th> <input class="check-box" data-val="true" id="IsRight-@i-@j" name="@Model.Results[i][j]" value="true" type="checkbox">
-                             <input type="hidden" value="false" name="@Model.Results[i][j]" ></th>
-                        <th>@answer.Text</th>
-                    </tr>
-                }
-            </table>
+                    @{int j = 0;}
+                    @foreach (var answer in @Model.Questions[i].Answers)
+                    {
+                        <tr>
+                            <th>
+                                @*@Html.CheckBox(i.ToString()+j.ToString(), false)*@
+                                @Html.CheckBoxFor(model => model.Results[i][j])
+                                @*<input class="check-box" id="IsRight-@i-@j" name="@i@j" value="true" type="checkbox">
+                                <input type="hidden" value="false" name="@i@j">*@
+                            </th>
+                            <th>@answer.Text</th>
+                        </tr>
+                        j++;
+                        @*@Model.Results[i][j]= Html.CheckBox(i.ToString()+j.ToString(), false);*@
+                    }
+                </table>
+            </div>
+                        }
 
-       }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Finish" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                        }
 
+@*<button id="test">
+    Test
+</button>
 
+<script>
+    $(document).ready(function () {
+        $("#test").click(function () {
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Finish" class="btn btn-default" />
-                        </div>
-                    </div>
-</div>
-}
+            console.log($("10").is(':checked'));
+            var isChecked = $("10").is(':checked');
+        })
+    })
+</script>*@

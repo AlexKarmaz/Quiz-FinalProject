@@ -11,5 +11,6 @@ namespace BLL.Interface.Interfaces
     {
         void DeleteTestQuestions(int testId);
         IEnumerable<BllTest> Search(string text);
+        IEnumerable<bool> CheckAnswers(int testId, bool[][] results);
     }
 }

@@ -17,11 +17,13 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IUserRepository userRepository;
+        private readonly ITestResultRepository testResultRepository;
 
-        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository)
+        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository, ITestResultRepository testResultRepository)
         {
             this.unitOfWork = unitOfWork;
             this.userRepository = userRepository;
+            this.testResultRepository = testResultRepository;
         }
 
         public IEnumerable<BllUser> GetAll()
@@ -50,6 +52,7 @@ namespace BLL.Services
         public void Delete(BllUser entity)
         {
             userRepository.Delete(entity.ToDalUser());
+            DeleteUserResults(entity.Id);
             unitOfWork.Commit();
         }
 
@@ -69,6 +72,15 @@ namespace BLL.Services
             var visitor = new PredicateExpressionVisitor<BllUser, DalUser>(Expression.Parameter(typeof(DalUser), predicates.Parameters[0].Name));
             var exp = Expression.Lambda<Func<DalUser, bool>>(visitor.Visit(predicates.Body), visitor.NewParameter);
             return userRepository.GetAllByPredicate(exp).Select(user => user.ToBllUser()).ToList();
+        }
+
+        public void DeleteUserResults(int userId)
+        {
+            var userResults = testResultRepository.GetAllByPredicate(r => r.UserId == userId);
+            foreach(var userResult in userResults)
+            {
+                testResultRepository.Delete(userResult);
+            }
         }
     }
 }
