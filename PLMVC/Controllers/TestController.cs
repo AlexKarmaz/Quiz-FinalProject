@@ -71,14 +71,16 @@ namespace PLMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var bllTest = testService.GetOneByPredicate(t=>t.Id == testId);
-            try
+            bool isUserExist = userService.IsExistUser(bllTest.UserId);
+            if(isUserExist)
             {
                 userName = userService.GetOneByPredicate(u => u.Id == bllTest.UserId).UserName;
             }
-            catch(Exception ex)
+            else
             {
                 userName = "Creator was deleted";
             }
+          
             string themeName = themeService.GetOneByPredicate(t => t.Id == bllTest.ThemeId).Name;
             var mvcTest = bllTest.ToMvcTest();
             mvcTest.UserName = userName;
@@ -168,10 +170,6 @@ namespace PLMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            int i = 42;
-            i.ToString();
-            object o = i;
-            o.ToString();
 
             searchString = searchString.ToLower();
             var tests = testService.Search(searchString);

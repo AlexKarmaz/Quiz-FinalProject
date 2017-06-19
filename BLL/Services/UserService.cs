@@ -126,5 +126,27 @@ namespace BLL.Services
                 testResultRepository.Delete(userResult);
             }
         }
+        /// <summary>
+        /// Checks the existence of the user
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Bool</returns>
+        public bool IsExistUser(int userId)
+        {
+            bool isExist = true;
+            DalUser user = null;
+          try
+            {
+                 user = userRepository.GetOneByPredicate(u => u.Id == userId);
+            }
+            catch(Exception)
+            {
+                isExist = false;
+            }
+            if (user == null)
+                isExist = false;
+
+            return isExist;
+        }
     }
 }

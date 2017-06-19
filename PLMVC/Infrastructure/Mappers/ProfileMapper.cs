@@ -12,19 +12,18 @@ namespace PLMVC.Infrastructure.Mappers
         public static BllProfile ToBllProfile(this ProfileViewModel profile)
         {
             if (profile == null)
-                throw new ArgumentNullException(nameof(profile));
+                return null;
             return new BllProfile()
             {
                 Id = profile.Id,
                 UserId = profile.UserId
-                //CreatedTests = model.ToBllProfile();
             };
         }
 
         public static ProfileViewModel ToMvcProfile(this BllProfile profile)
         {
             if (profile == null)
-                throw new ArgumentNullException(nameof(profile));
+                return null;
             return new ProfileViewModel()
             {
                 Id = profile.Id,

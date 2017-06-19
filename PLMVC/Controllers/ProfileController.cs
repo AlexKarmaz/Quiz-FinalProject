@@ -58,11 +58,11 @@ namespace PLMVC.Controllers
             {
                 int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
                 var profile = profileService.GetOneByPredicate(p => p.UserId == userId);
-                var model = profile.ToMvcProfile();
+                var mvcProfile = profile.ToMvcProfile();
                 ViewBag.UserName = userService.GetById(userId).UserName;
                 if (Request.IsAjaxRequest())
-                    return PartialView("_Profile", model);
-                return View("_Profile", model);
+                    return PartialView("_Profile", mvcProfile);
+                return View("_Profile", mvcProfile);
             }
             return RedirectToAction("Login", "Account");
         }

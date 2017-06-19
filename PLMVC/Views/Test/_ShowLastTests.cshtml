@@ -36,10 +36,13 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-           @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "start-test-link"}) |
-           @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
-           @Ajax.ActionLink("Details", "TestDetails","Test" , new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
-           @Ajax.ActionLink("Delete", "DeleteTestFromAllUsers", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET",Confirm = "Do you really want to delete this test?" })
+           @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "start-test-link"})
+           @if (User.IsInRole("admin"))
+           {@:|
+               @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
+               @Ajax.ActionLink("Details", "TestDetails", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
+               @Ajax.ActionLink("Delete", "DeleteTestFromAllUsers", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this test?" }); 
+           }
         </td>
     </tr>
 }

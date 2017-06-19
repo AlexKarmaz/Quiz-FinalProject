@@ -1,12 +1,16 @@
 ﻿@model IEnumerable<PLMVC.Models.Test.ShowTestsViewModel>
 
-<h3>Searching results</h3>
+<h3 align="center">Searching results</h3>
 <hr />
 
 @if (Model.Count() == 0)
 {
-    <div>
-        The search has not given any results...
+    <div align="center">
+        <hgroup class="title">
+            <h3>The search has not given any results...</h3>
+        </hgroup>
+
+        <img src="~/Content/Img/Sorry-With-Pen-Writing.jpg" alt="Not found" width="600" height="400">
     </div>
 }
 else

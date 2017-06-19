@@ -12,7 +12,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static BllTest ToBllTest(this CreateTestViewModel createTestViewModel)
         {
             if (createTestViewModel == null)
-                throw new ArgumentNullException(nameof(createTestViewModel));
+                return null;
             return new BllTest()
             {
                 Title = createTestViewModel.Title,
@@ -27,7 +27,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static EditTestViewModel ToMvcEditTest(this BllTest bllTest)
         {
             if (bllTest == null)
-                throw new ArgumentNullException(nameof(bllTest));
+                return null;
             return new EditTestViewModel()
             {
                 Title = bllTest.Title,
@@ -41,7 +41,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static PassingTestViewModel ToMvcPassingTest(this BllTest bllTest)
         {
             if (bllTest == null)
-                throw new ArgumentNullException(nameof(bllTest));
+                return null;
             return new PassingTestViewModel()
             {
                 Id = bllTest.Id,
@@ -53,7 +53,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static BllTest ToBllEditTest(this EditTestViewModel createTestViewModel)
         {
             if (createTestViewModel == null)
-                throw new ArgumentNullException(nameof(createTestViewModel));
+                return null;
             return new BllTest()
             {
                 Title = createTestViewModel.Title,
@@ -69,7 +69,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static DetailsTestViewModel ToMvcTest(this BllTest bllTest)
         {
             if (bllTest == null)
-                throw new ArgumentNullException(nameof(bllTest));
+                return null;
             return new DetailsTestViewModel()
             {
                 Title = bllTest.Title,
@@ -86,7 +86,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static ShowTestsViewModel ToMvcAllTests(this BllTest bllTest)
         {
             if (bllTest == null)
-                throw new ArgumentNullException(nameof(bllTest));
+                return null;
             return new ShowTestsViewModel()
             {
                 Id = bllTest.Id,
@@ -98,7 +98,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static PreviewTestViewModel ToMvcPreviewTest(this BllTest bllTest)
         {
             if (bllTest == null)
-                throw new ArgumentNullException(nameof(bllTest));
+                return null;
             return new PreviewTestViewModel()
             {
                 Id = bllTest.Id,

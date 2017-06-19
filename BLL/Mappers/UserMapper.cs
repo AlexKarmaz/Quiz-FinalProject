@@ -13,7 +13,7 @@ namespace BLL.Mappers
         public static DalUser ToDalUser(this BllUser bllUser)
         {
             if (bllUser == null)
-                throw new ArgumentNullException(nameof(bllUser));
+                return null;
             var dalUser = new DalUser()
             {
                 Id = bllUser.Id,
@@ -29,7 +29,7 @@ namespace BLL.Mappers
         public static BllUser ToBllUser(this DalUser dalUser)
         {
             if (dalUser == null)
-                throw new ArgumentNullException(nameof(dalUser));
+                return null;
             var bllUser = new BllUser()
             {
                 Id = dalUser.Id,

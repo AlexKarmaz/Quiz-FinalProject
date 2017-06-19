@@ -12,7 +12,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static RoleModel ToMvcRole(this BllRole bllRole)
         {
             if (bllRole == null)
-                throw new ArgumentNullException(nameof(bllRole));
+                return null;
             return new RoleModel()
             {
                 Id = bllRole.Id,

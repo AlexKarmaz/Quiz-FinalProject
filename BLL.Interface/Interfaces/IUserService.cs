@@ -55,5 +55,11 @@ namespace BLL.Interface.Interfaces
         /// </summary>
         /// <param name="entity">User </param>
         void Update(BllUser entity);
+        /// <summary>
+        /// Checks the existence of the user
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>Bool</returns>
+        bool IsExistUser(int userId);
     }
 }

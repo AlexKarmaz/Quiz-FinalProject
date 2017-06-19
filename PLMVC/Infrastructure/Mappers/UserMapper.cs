@@ -12,7 +12,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static UserViewModel ToMvcUser(this BllUser bllUser)
         {
             if (bllUser == null)
-                throw new ArgumentNullException(nameof(bllUser));
+                return null;
             return new UserViewModel()
             {
                 Id = bllUser.Id,
@@ -27,7 +27,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static ShowUsersViewModel ToMvcAllUsers(this BllUser bllUser)
         {
             if (bllUser == null)
-                throw new ArgumentNullException(nameof(bllUser));
+                return null;
             return new ShowUsersViewModel()
             {
                 Id = bllUser.Id,

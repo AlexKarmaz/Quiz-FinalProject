@@ -13,7 +13,7 @@ namespace DAL.Mappers
         public static DalUser ToDalUser(this User ormUser)
         {
             if (ormUser == null)
-                throw new ArgumentNullException(nameof(ormUser));
+                return null;
             var dalUser = new DalUser()
             {
                 Id = ormUser.Id,
@@ -29,7 +29,7 @@ namespace DAL.Mappers
         public static User ToOrmUser(this DalUser dalUser)
         {
             if (dalUser == null)
-                throw new ArgumentNullException(nameof(dalUser));
+                return null;
             var ormUser = new User()
             {
                 Id = dalUser.Id,

@@ -3,6 +3,8 @@ using BLL.Services;
 using DAL.Concrete;
 using DAL.Concrete.Repositories;
 using DAL.Interface.Interfaces;
+using Logger.Interfaces;
+using Logger;
 using Ninject;
 using Ninject.Web.Common;
 using ORM;
@@ -23,6 +25,8 @@ namespace DependencyResolver
 
             kernel.Bind<DbContext>().To<TestEntities>().InRequestScope();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+
+            kernel.Bind<ILogger>().To<NLoggerAdapter>();
 
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();

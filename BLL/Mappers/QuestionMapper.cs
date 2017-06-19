@@ -13,7 +13,7 @@ namespace BLL.Mappers
         public static DalQuestion ToDalQuestion(this BllQuestion bllQuestion)
         {
             if (bllQuestion == null)
-                throw new ArgumentNullException(nameof(bllQuestion));
+                return null;
             var dalQuestion = new DalQuestion()
             {
                 Id = bllQuestion.Id,
@@ -28,7 +28,7 @@ namespace BLL.Mappers
         public static BllQuestion ToBllQuestion(this DalQuestion dalQuestion)
         {
             if (dalQuestion == null)
-                throw new ArgumentNullException(nameof(dalQuestion));
+                return null;
             var bllQuestion = new BllQuestion()
             {
                 Id = dalQuestion.Id,

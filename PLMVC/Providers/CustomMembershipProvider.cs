@@ -2,6 +2,7 @@
 using BLL.Interface.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Web.Helpers;
 using System.Web.Security;
 
 namespace PLMVC.Providers
@@ -38,7 +39,7 @@ namespace PLMVC.Providers
             {
                 Email = email,
                 UserName = name,
-                Password = password,
+                Password = Crypto.HashPassword(password),
                 Profile = profile
             };
           
@@ -56,7 +57,7 @@ namespace PLMVC.Providers
         {
             var user = UserService.GetOneByPredicate(u => u.UserName == name);
 
-            if (user != null && user.Password == password)
+            if (user != null && Crypto.VerifyHashedPassword(user.Password, password))
             {
                 return true;
             }

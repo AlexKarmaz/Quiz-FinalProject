@@ -13,7 +13,7 @@ namespace BLL.Mappers
         public static DalProfile ToDalProfile(this BllProfile bllProfile)
         {
             if (bllProfile == null)
-                throw new ArgumentNullException(nameof(bllProfile));
+                return null;
             return new DalProfile()
             {
                 Id = bllProfile.Id,
@@ -26,7 +26,7 @@ namespace BLL.Mappers
         public static BllProfile ToBllProfile(this DalProfile dalProfile)
         {
             if (dalProfile == null)
-                throw new ArgumentNullException(nameof(dalProfile));
+                return null;
             return new BllProfile()
             {
                 Id = dalProfile.Id,

@@ -12,7 +12,7 @@ namespace PLMVC.Infrastructure.Mappers
         public static ResultStatisticsViewModel ToMvcStatistics(this BllTestResult bllTestResult)
         {
             if (bllTestResult == null)
-                throw new ArgumentNullException(nameof(bllTestResult));
+                return null;
             return new ResultStatisticsViewModel()
             {
                 UserId = bllTestResult.UserId,

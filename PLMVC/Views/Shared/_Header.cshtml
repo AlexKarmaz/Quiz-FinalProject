@@ -35,10 +35,11 @@
                     </div>
               }
                 </li>
-
+                if (User.IsInRole("admin")) { 
                 <li class="navbar-create">
                     @Ajax.ActionLink("Manage", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
                 </li>
+                }
            }
                 <li>
                     @Html.Partial("_LoginMenu")

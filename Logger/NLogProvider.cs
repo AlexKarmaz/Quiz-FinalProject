@@ -21,7 +21,7 @@ namespace Logger
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Throws if 
         /// <paramref name="className"/> is null</exception>
-        public static ILogger GetLogger(string className)
+        public static Logger.Interfaces.ILogger GetLogger(string className)
         {
             if (ReferenceEquals(className, null))
                 throw new ArgumentNullException($"{nameof(className)} is null.");

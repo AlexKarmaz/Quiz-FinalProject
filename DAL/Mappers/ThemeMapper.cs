@@ -13,7 +13,7 @@ namespace DAL.Mappers
         public static DalTheme ToDalTheme(this Theme ormTheme)
         {
             if (ormTheme == null)
-                throw new ArgumentNullException(nameof(ormTheme));
+                return null;
             var dalTheme = new DalTheme()
             {
                 Id = ormTheme.Id,
@@ -25,7 +25,7 @@ namespace DAL.Mappers
         public static Theme ToOrmTheme(this DalTheme dalTheme)
         {
             if (dalTheme == null)
-                throw new ArgumentNullException(nameof(dalTheme));
+                return null;
             var ormTheme = new Theme()
             {
                 Id = dalTheme.Id,
