@@ -5,6 +5,9 @@ using System.Web;
 
 namespace ORM.Entities
 {
+    /// <summary>
+    /// This ORM entity represents a role which stores in the database.
+    /// </summary>
     public class Role
     {
         public Role()

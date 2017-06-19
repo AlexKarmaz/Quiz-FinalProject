@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ORM.Entities
 {
+    /// <summary>
+    /// This ORM entity represents a test which stores in the database.
+    /// </summary>
     public class Test
     {
         public Test()

@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.Interfaces
 {
+    /// <summary>
+    /// This interface provides basic CRUD and GET operations for services.
+    /// </summary>
+    /// <typeparam name="T">BLL entity.</typeparam>
     public interface IService<T>
     {
         T GetById(int id);

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace ORM.Entities
 {
+    /// <summary>
+    /// This ORM entity represents an answer which stores in the database.
+    /// </summary>
     public class Answer
     {
         public int Id { get; set; }

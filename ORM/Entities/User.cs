@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ORM.Entities
 {
+    /// <summary>
+    /// This ORM entity represents a user which stores in the database.
+    /// </summary>
     public class User
     {
         public User()

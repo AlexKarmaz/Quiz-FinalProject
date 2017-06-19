@@ -8,6 +8,9 @@ namespace ORM.Entities
 {
     public class Profile
     {
+        /// <summary>
+        /// This ORM entity represents a profile which stores in the database.
+        /// </summary>
         public Profile()
         {
             PassedTests = new List<Test>();

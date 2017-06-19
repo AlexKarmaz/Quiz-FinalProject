@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.Entities
 {
+    /// <summary>
+    /// This class represents a test on Business Logic Layer.
+    /// </summary>
     public class BllTest
     {
         public int Id { get; set; }

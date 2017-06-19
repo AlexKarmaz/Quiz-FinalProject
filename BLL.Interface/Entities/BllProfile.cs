@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.Entities
 {
+    /// <summary>
+    /// This class represents a profile on Business Logic Layer.
+    /// </summary>
     public class BllProfile
     {
         public int Id { get; set; }
