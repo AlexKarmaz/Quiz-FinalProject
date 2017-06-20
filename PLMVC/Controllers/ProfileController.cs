@@ -37,42 +37,5 @@ namespace PLMVC.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
-
-        //[HttpGet]
-        //public ActionResult Edit()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Edit(ProfileEditModel model, HttpPostedFileBase file = null)
-        //{
-        //    var profileToEdit = profileService.GetOneByPredicate(p => p.UserName == User.Identity.Name);
-
-        //    model.Id = profileToEdit.Id;
-
-        //    ImageSetUp(model.Id, file);
-
-        //    profileService.Update(model.ToUpdatingBllProfile());
-
-        //    return RedirectToAction("Index");
-        //}
-
-       
-        //public ActionResult ShowUser(int id)
-        //{
-
-        //    var profile = profileService.GetById(id).ToFullMvcProfile();
-
-        //    var curUserProfileId = profileService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
-
-        //    if (friendshipService.IsFriend(curUserProfileId, id))
-        //        ViewBag.IsFriend = true;
-        //    else if (friendshipService.IsRequested(curUserProfileId, id))
-        //        ViewBag.IsFriend = null;
-        //    else ViewBag.IsFriend = false;
-
-        //    return View("_Profile", profile);
-        //}
     }
 }

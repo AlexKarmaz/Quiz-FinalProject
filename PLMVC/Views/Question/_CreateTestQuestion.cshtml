@@ -1,5 +1,7 @@
 ﻿@model PLMVC.Models.Question.QuestionViewModel
 
+@Scripts.Render("~/bundles/jqueryval")
+
 @using (Ajax.BeginForm("CreateTestQuestion","Question",new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()

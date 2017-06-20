@@ -2,9 +2,13 @@
 
 @{
     ViewBag.Title = "CreateTest";
+   
 }
 
-@using (Ajax.BeginForm("CreateTest", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Ajax.BeginForm("CreateTest", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST"}))
 {
     @Html.AntiForgeryToken()
     
@@ -33,7 +37,7 @@
             @Html.LabelFor(model => model.TimeLimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TimeLimit, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TimeLimit, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.TimeLimit, "", new { @class = "text-danger", @placeholder = "Enter in format HH:MM:SS" })
             </div>
         </div>
 

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace PLMVC.Controllers
 {
+    [Authorize]
     public class AnswerController : Controller
     {
         private readonly ITestService testService;
@@ -31,10 +32,6 @@ namespace PLMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            // var test = testService.GetOneByPredicate(t => t.Id == testId);
-            //var question = questionService.GetOneByPredicate(q => q.Id == questionId);
-            //ViewBag.themeId = question.ThemeId;
-           // ViewBag.QuestionId = questionId;
             if (Request.IsAjaxRequest())
                 return PartialView("_CreateQuestionAnswer");
             return View("_CreateQuestionAnswer");

@@ -1,4 +1,5 @@
 ﻿@model PLMVC.Models.Theme.ThemeViewModel
+@Scripts.Render("~/bundles/jqueryval")
 
 @using (Ajax.BeginForm("CreateTheme","Test",new AjaxOptions {UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
 {

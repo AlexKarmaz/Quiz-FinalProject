@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace PLMVC.Controllers
 {
+    [Authorize]
     public class QuestionController : Controller
     {
         private readonly ITestService testService;
@@ -34,7 +35,6 @@ namespace PLMVC.Controllers
             }
             var test = testService.GetOneByPredicate(t => t.Id == testId);
             ViewBag.themeId = test.ThemeId;
-            //ViewBag.testId = testId;
             if (Request.IsAjaxRequest())
                 return PartialView("_CreateTestQuestion");
             return View("_CreateTestQuestion");
@@ -106,7 +106,6 @@ namespace PLMVC.Controllers
             }
             if (ModelState.IsValid)
             {
-               // var bllAnswers = questionService.GetOneByPredicate(a => a.Id == model.Id).Answers;
                 model.Answers = new List<AnswerViewModel>();
                 var bllQuestion = model.ToBllQuestion();
                 questionService.Update(bllQuestion);

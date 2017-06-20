@@ -1,13 +1,6 @@
 ﻿@model PLMVC.Models.Test.PreviewTestViewModel
 
-@*<script>
-    function showFirstQuestion() {
-        var lProp = $("#question-1").prop("display");
-        console.log(lProp);
-        lProp = "block";
 
-    }
-</script>*@
 <div class="text-success title-test">@Model.Title</div>
 <div class="jumbotron">
     <p>To pass the test successfully you are to give <a class="text-info" > @Model.MinToSuccess.ToString("0.00")% </a> correct answers up to <a class="text-info"> @Model.TimeLimit.ToString(@"hh\:mm\:ss") </a> .</p> 

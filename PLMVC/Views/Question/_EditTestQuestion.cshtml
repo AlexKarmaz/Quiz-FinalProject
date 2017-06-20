@@ -1,4 +1,5 @@
 ﻿@model PLMVC.Models.Question.QuestionViewModel
+@Scripts.Render("~/bundles/jqueryval")
 
 @using (Ajax.BeginForm("EditTestQuestion", new AjaxOptions { UpdateTargetId = "details_test_questions", HttpMethod = "POST" }))
 {

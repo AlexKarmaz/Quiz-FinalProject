@@ -1,5 +1,6 @@
 ﻿@model PLMVC.Models.Test.EditTestViewModel
 
+@Scripts.Render("~/bundles/jqueryval")
 @using (Ajax.BeginForm("EditTest", "Test",new { testId = @ViewBag.TestId}, new AjaxOptions {UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST"}))
 {
     @Html.AntiForgeryToken()
@@ -41,9 +42,8 @@
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.ThemeId, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <label class = "control-label col-md-2">
-                Theme
+                Category
             </label>
             <div class="col-md-10">
                @Html.DropDownListFor(x => x.ThemeId, ViewBag.Themes as SelectList, htmlAttributes: new { @class = "dropdown-input" })

@@ -45,6 +45,11 @@ namespace PLMVC.Controllers
         [HttpPost]
         public ActionResult CreateTest(CreateTestViewModel model)
         {
+            if (testService.GetOneByPredicate(u => u.Title.ToLower() == model.Title.ToLower()) != null)
+            {
+                ModelState.AddModelError(String.Empty, "Test with this title already registered.");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
@@ -317,6 +322,11 @@ namespace PLMVC.Controllers
         [HttpPost]
         public ActionResult CreateTheme(ThemeViewModel model)
         {
+            if (themeService.GetOneByPredicate(t => t.Name == model.Name) != null)
+            {
+                ModelState.AddModelError("", "Category with this name already registered.");
+                return View(model);
+            }
             if (model == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

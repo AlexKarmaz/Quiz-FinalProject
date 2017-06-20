@@ -1,8 +1,7 @@
 ﻿@model PLMVC.Models.Test.PassingTestViewModel
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
 
+@Scripts.Render("~/Scripts/customJS.js")
 
 @using (Ajax.BeginForm("PassingTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
 {
@@ -20,7 +19,7 @@
         @for (int i = 0; i < Model.Questions.Count; i++)
         {
             int k = i + 1;
-            <div @*style="display:none"*@ id="question-@k">
+            <div style="display:none" id="question-@k" class="question">
                 <h3 class="text-info">Question @k</h3>
                 <h3 >@Model.Questions[i].Text</h3>
                 <table class="table">
@@ -33,15 +32,11 @@
                     {
                         <tr>
                             <th>
-                                @*@Html.CheckBox(i.ToString()+j.ToString(), false)*@
                                 @Html.CheckBoxFor(model => model.Results[i][j])
-                                @*<input class="check-box" id="IsRight-@i-@j" name="@i@j" value="true" type="checkbox">
-                                <input type="hidden" value="false" name="@i@j">*@
                             </th>
                             <th>@answer.Text</th>
                         </tr>
                         j++;
-                        @*@Model.Results[i][j]= Html.CheckBox(i.ToString()+j.ToString(), false);*@
                     }
                 </table>
             </div>
@@ -49,22 +44,38 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Finish" class="btn btn-default" />
+                <input id="finshBtn" type="submit" value="Finish" class="btn btn-default" style="display:none"/>
             </div>
         </div>
     </div>
                         }
+<button id="nextBtn" class="btn btn-default"> Next Question </button>
 
-@*<button id="test">
-    Test
-</button>
 
 <script>
-    $(document).ready(function () {
-        $("#test").click(function () {
+    var currentNumber = 1;
+    var questionsCount = $(".question").length;
 
-            console.log($("10").is(':checked'));
-            var isChecked = $("10").is(':checked');
-        })
-    })
-</script>*@
+    showQuestion();
+
+    function showQuestion() {
+        var previous = currentNumber - 1;
+        var previousBlock = $("#question-" + previous);
+        if (previousBlock) {
+            previousBlock.hide();
+        }
+        var currentBlock = $("#question-" + currentNumber);
+        currentBlock.show();
+
+        if (currentNumber === questionsCount) {
+            $("#nextBtn").hide();
+            $("#finshBtn").show();
+        }
+    }
+
+    $("#nextBtn").click(function () {
+        currentNumber += 1;
+        showQuestion();
+    });
+
+</script>

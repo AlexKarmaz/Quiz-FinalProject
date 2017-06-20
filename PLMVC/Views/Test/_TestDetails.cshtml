@@ -1,5 +1,5 @@
 ﻿@model PLMVC.Models.Test.DetailsTestViewModel
-
+@Scripts.Render("~/bundles/jqueryval")
 <div>
     <h4>Details test  @Ajax.ActionLink("Edit test", "EditTest", "Test", new { testId = @ViewBag.TestId }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) </h4>
     <hr />
