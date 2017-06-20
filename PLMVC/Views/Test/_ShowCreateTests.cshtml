@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PLMVC.Models.Test.CreateTestsProfileViewModel>
+
+<h3>Created tests</h3>
+<hr />
+@if (Model.Count() == 0)
+{
+    <div>
+        You haven't created any tests yet. Try it!
+    </div>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayName("Category")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThemeName)
+        </td>
+        <td>
+          @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" }) |
+          @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
+          @Ajax.ActionLink("Details", "TestDetails", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }) |
+          @Ajax.ActionLink("Delete", "DeleteTestFromAllUsers", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this test?" })
+        </td>
+    </tr>
+}
+
+</table>
+}

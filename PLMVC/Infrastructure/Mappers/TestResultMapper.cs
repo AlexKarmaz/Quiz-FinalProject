@@ -20,5 +20,20 @@ namespace PLMVC.Infrastructure.Mappers
                 IsSuccess = bllTestResult.IsSuccess,
             };
         }
+
+        public static PassedTestResult ToMvcPassedTestResult(this BllTestResult bllTestResult)
+        {
+            if (bllTestResult == null)
+                return null;
+            return new PassedTestResult()
+            {
+                TestId = bllTestResult.TestId,
+                UserId = bllTestResult.UserId,
+                Runtime = bllTestResult.Runtime,
+                IsSuccess = bllTestResult.IsSuccess,
+                DateComplete = bllTestResult.DateComplete,
+                Results = bllTestResult.Results.ToList()
+            };
+        }
     }
 }

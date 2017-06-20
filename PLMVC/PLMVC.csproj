@@ -171,6 +171,7 @@
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Question\QuestionViewModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\TestResult\PassedTestResult.cs" />
     <Compile Include="Models\TestResult\ResultStatisticsViewModel.cs" />
     <Compile Include="Models\Test\CreateTestViewModel.cs" />
     <Compile Include="Models\Test\DetailsTestViewModel.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\Test\PassingTestViewModel.cs" />
     <Compile Include="Models\Test\PreviewTestViewModel.cs" />
     <Compile Include="Models\Test\ShowTestsViewModel.cs" />
+    <Compile Include="Models\Test\CreateTestsProfileViewModel.cs" />
     <Compile Include="Models\Test\TestViewModel.cs" />
     <Compile Include="Models\Theme\ThemeViewModel.cs" />
     <Compile Include="Models\User\LogViewModel.cs" />
@@ -269,7 +271,6 @@
     <Content Include="Views\Shared\_LoginMenu.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Test\_CreateTest.cshtml" />
     <Content Include="Views\Shared\_Loading.cshtml" />
     <Content Include="Views\Test\_TestDetails.cshtml" />
@@ -293,10 +294,11 @@
     <Content Include="Views\Test\_PassingTest.cshtml" />
     <Content Include="Views\Test\_NotReadyTest.cshtml" />
     <Content Include="Views\Test\_Statistics.cshtml" />
+    <Content Include="Views\Profile\_Profile.cshtml" />
+    <Content Include="Views\Test\_ShowCreateTests.cshtml" />
+    <Content Include="Views\Test\_ShowPassedTests.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Profile\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

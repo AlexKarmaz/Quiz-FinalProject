@@ -1,5 +1,6 @@
 ﻿using BLL.Interface.Entities;
 using PLMVC.Models.Test;
+using PLMVC.Models.TestResult;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,6 +106,19 @@ namespace PLMVC.Infrastructure.Mappers
                 Title = bllTest.Title,
                 TimeLimit = bllTest.TimeLimit,
                 MinToSuccess = bllTest.MinToSuccess
+            };
+        }
+
+        public static CreateTestsProfileViewModel ToMvcProfileCreateTest(this BllTest bllTest)
+        {
+            if (bllTest == null)
+                return null;
+            return new CreateTestsProfileViewModel()
+            {
+                Id = bllTest.Id,
+                Title = bllTest.Title,
+                Description = bllTest.Description,
+                ThemeId = bllTest.ThemeId
             };
         }
     }

@@ -21,45 +21,16 @@ namespace PLMVC.Controllers
             this.profileService = profileService;
         }
 
-        //[HttpPost]
-        //public ActionResult Search(SearchModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var result = profileService.Search(new BllProfile()
-        //        {
-        //            UserName = model.UserName,
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            City = model.City,
-        //            Gender = model.Gender
-        //        }).Select(p => p.ToMvcProfile()).ToList();
-        //        ViewBag.Title = "Search Results";
-        //        ViewBag.EmptyMessage = "No results :(";
-        //        return View("_ProfilesViewList", result);
-        //    }
-        //    return View(model);
-        //}
-
-        //[HttpGet]
-        //public ActionResult Search()
-        //{
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        return PartialView();
-        //    }
-        //    return View();
-        //}
-
         [HttpGet]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
             {
-                int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
-                var profile = profileService.GetOneByPredicate(p => p.UserId == userId);
+                var user = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name);
+                var profile = profileService.GetOneByPredicate(p => p.UserId == user.Id);
                 var mvcProfile = profile.ToMvcProfile();
-                ViewBag.UserName = userService.GetById(userId).UserName;
+                mvcProfile.UserName = user.UserName;
+                mvcProfile.Email = user.Email;
                 if (Request.IsAjaxRequest())
                     return PartialView("_Profile", mvcProfile);
                 return View("_Profile", mvcProfile);

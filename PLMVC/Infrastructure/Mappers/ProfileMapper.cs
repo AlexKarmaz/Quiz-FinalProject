@@ -16,7 +16,6 @@ namespace PLMVC.Infrastructure.Mappers
             return new BllProfile()
             {
                 Id = profile.Id,
-                UserId = profile.UserId
             };
         }
 
@@ -27,7 +26,6 @@ namespace PLMVC.Infrastructure.Mappers
             return new ProfileViewModel()
             {
                 Id = profile.Id,
-                UserId = profile.Id
             };
         }
     }

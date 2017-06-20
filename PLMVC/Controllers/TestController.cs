@@ -20,19 +20,20 @@ namespace PLMVC.Controllers
         private readonly ITestResultService testResultService;
         private readonly IUserService userService;
         private readonly IThemeService themeService;
+        private readonly IProfileService profileService;
 
-        public TestController(ITestService testService, ITestResultService testResultService, IUserService userService, IThemeService themeService)
+        public TestController(ITestService testService, ITestResultService testResultService, IUserService userService, IThemeService themeService, IProfileService profileService)
         {
             this.testService = testService;
             this.testResultService = testResultService;
             this.userService = userService;
             this.themeService = themeService;
+            this.profileService = profileService;
         }
 
         [HttpGet]
         public ActionResult CreateTest()
         {
-            //System.Threading.Thread.Sleep(5000);
             SelectList themes = new SelectList(themeService.GetAll(),"Id", "Name");
            ViewBag.Themes = themes;
             if (Request.IsAjaxRequest())
@@ -113,6 +114,41 @@ namespace PLMVC.Controllers
             if (Request.IsAjaxRequest())
                 return PartialView("_ShowTestsByTheme", mvcTests);
             return View("_ShowTestsByTheme", mvcTests);
+        }
+
+        [HttpGet]
+        public ActionResult ShowCreateTests(int? profileId)
+        {
+            if (profileId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var tests = profileService.GetOneByPredicate(p => p.Id == profileId).CreatedTests;
+            var mvcTests = tests.Select(t => t.ToMvcProfileCreateTest()).ToArray();
+            for (int i = 0; i < mvcTests.Length; i++)
+            {
+                mvcTests[i].ThemeName = themeService.GetById(mvcTests[i].ThemeId).Name;
+            }
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_ShowCreateTests", mvcTests);
+            return View("_ShowCreateTests", mvcTests);
+        }
+
+        [HttpGet]
+        public ActionResult ShowPassedTests(int? profileId)
+        {
+            if (profileId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            int userId = profileService.GetById(Convert.ToInt32(profileId)).UserId;
+            var testResults = testResultService.GetAllByPredicate(r => r.UserId == userId);
+            var mvcTestResults = testResults.Select(t => t.ToMvcPassedTestResult()).ToArray();
+            for(int i = 0; i < mvcTestResults.Length; i++)
+            {
+                mvcTestResults[i].Title = testService.GetById(mvcTestResults[i].TestId).Title;
+            }
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_ShowPassedTests", mvcTestResults);
+            return View("_ShowPassedTests", mvcTestResults);
         }
 
         [HttpGet]

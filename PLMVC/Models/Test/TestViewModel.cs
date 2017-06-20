@@ -15,7 +15,7 @@ namespace PLMVC.Models.Test
         public DateTime DateCreation { get; set; }
         public int UserId { get; set; }
         public int ThemeId { get; set; }
-        //public ICollection<BllQuestion> Questions { get; set; }
-      //  public ICollection<BllTestResult> TestResults { get; set; }
+       // public ICollection<BllQuestion> Questions { get; set; }
+        //public ICollection<BllTestResult> TestResults { get; set; }
     }
 }
