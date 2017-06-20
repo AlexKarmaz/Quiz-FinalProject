@@ -12,8 +12,8 @@
         <h3 class="text-warning">You did not pass this test. Don't give up and try it again.</h3>
     }
 
-    <p>The time limit - @Model.TimeLimit. Your time - @Model.Runtime.ToString(@"hh\:mm\:ss") </p>
-    <p>The minimum percent of correct answers - @Model.MinToSuccess%. Your result - @Model.PercentCorrectAnswers.ToString("0.00")%</p>
+    <p>The time limit - <a class="text-info"> @Model.TimeLimit </a> . Your time - <a class="text-info"> @Model.Runtime.ToString(@"hh\:mm\:ss") </a> </p>
+    <p>The minimum percent of correct answers - <a class="text-info"> @Model.MinToSuccess% </a> . Your result - <a class="text-info"> @Model.PercentCorrectAnswers.ToString("0.00")% </a></p>
     <p>Test history you can see in your profile</p>
     <h3 class="text-info">Results of questions</h3>
     <hr />

@@ -28,6 +28,7 @@ namespace PLMVC.Infrastructure.Mappers
                 return null;
             return new PassedTestResult()
             {
+                Id = bllTestResult.Id,
                 TestId = bllTestResult.TestId,
                 UserId = bllTestResult.UserId,
                 Runtime = bllTestResult.Runtime,

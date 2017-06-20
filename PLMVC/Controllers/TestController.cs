@@ -193,10 +193,19 @@ namespace PLMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteTestFromAllUsers(int testId)
+        public ActionResult DeleteTests(int testId)
         {
             DeleteTest(testId);
             return RedirectToAction("ShowLastTests");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteTestFromProfile(int testId)
+        {
+            DeleteTest(testId);
+            int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
+            var profileId = profileService.GetOneByPredicate(p => p.UserId == userId).Id;
+            return RedirectToAction("ShowCreateTests", "Test", new { profileId = profileId });
         }
 
         [HttpGet]
@@ -284,6 +293,16 @@ namespace PLMVC.Controllers
             if (Request.IsAjaxRequest())
                 return PartialView("_Statistics", mvcTestResult);
             return View("_Statistics", mvcTestResult);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTestResult(int testResultId)
+        {
+            var testResult = testResultService.GetById(testResultId);
+            int userId = userService.GetOneByPredicate(u => u.UserName == User.Identity.Name).Id;
+            var profileId = profileService.GetOneByPredicate(p=>p.UserId == userId).Id;
+            testResultService.Delete(testResult);
+            return RedirectToAction("ShowPassedTests", "Test",new { profileId = profileId });
         }
 
     }

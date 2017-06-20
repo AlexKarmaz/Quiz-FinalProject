@@ -50,7 +50,8 @@ else
         </td>
         
         <td>
-           @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.TestId }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" }) 
+           @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.TestId }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" }) |
+           @Ajax.ActionLink("Delete result", "DeleteTestResult", "Test", new { testResultId = item.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "POST", Confirm = "Do you really want to delete this result?" })
         </td>
     </tr>
 }
