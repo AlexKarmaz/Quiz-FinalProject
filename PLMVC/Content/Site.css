@@ -106,3 +106,7 @@ textarea {
 .title-test{
     font-size: 60px;
 }
+
+.create-theme{
+    display: flex;
+}

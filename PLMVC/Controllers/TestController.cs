@@ -10,6 +10,7 @@ using PLMVC.Models.Question;
 using BLL.Interface.Entities;
 using System.Net;
 using System.Diagnostics;
+using PLMVC.Models.Theme;
 
 namespace PLMVC.Controllers
 {
@@ -295,7 +296,7 @@ namespace PLMVC.Controllers
             return View("_Statistics", mvcTestResult);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult DeleteTestResult(int testResultId)
         {
             var testResult = testResultService.GetById(testResultId);
@@ -303,6 +304,27 @@ namespace PLMVC.Controllers
             var profileId = profileService.GetOneByPredicate(p=>p.UserId == userId).Id;
             testResultService.Delete(testResult);
             return RedirectToAction("ShowPassedTests", "Test",new { profileId = profileId });
+        }
+
+        [HttpGet]
+        public ActionResult CreateTheme()
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView("_CreateTheme");
+            return View("_CreateTheme");
+        }
+
+        [HttpPost]
+        public ActionResult CreateTheme(ThemeViewModel model)
+        {
+            if (model == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var newTheme = model.ToBllTheme();
+            themeService.Create(newTheme);
+
+            return RedirectToAction("CreateTest");
         }
 
     }

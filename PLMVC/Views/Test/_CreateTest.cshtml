@@ -49,6 +49,7 @@
             @Html.LabelFor(model => model.ThemeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(x => x.ThemeId, ViewBag.Themes as SelectList, htmlAttributes: new { @class = "dropdown-input" })
+                @Ajax.ActionLink("Add new category", "CreateTheme", "Test", new AjaxOptions { UpdateTargetId = "work-with-theme", LoadingElementId = "loading", HttpMethod = "GET" })
             </div>
         </div>
 
@@ -59,4 +60,7 @@
         </div>
     </div>
 }
+<div id="work-with-theme">
+
+</div>
 

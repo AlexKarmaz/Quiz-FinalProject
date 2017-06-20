@@ -165,6 +165,7 @@
     <Compile Include="Infrastructure\Mappers\RoleMapper.cs" />
     <Compile Include="Infrastructure\Mappers\TestMapper.cs" />
     <Compile Include="Infrastructure\Mappers\TestResultMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\ThemeMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Answer\AnswerViewModel.cs" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Profile\_Profile.cshtml" />
     <Content Include="Views\Test\_ShowCreateTests.cshtml" />
     <Content Include="Views\Test\_ShowPassedTests.cshtml" />
+    <Content Include="Views\Test\_CreateTheme.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
