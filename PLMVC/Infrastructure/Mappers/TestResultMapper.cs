@@ -18,6 +18,7 @@ namespace PLMVC.Infrastructure.Mappers
                 UserId = bllTestResult.UserId,
                 Runtime = bllTestResult.Runtime,
                 IsSuccess = bllTestResult.IsSuccess,
+                Results = bllTestResult.Results
             };
         }
 

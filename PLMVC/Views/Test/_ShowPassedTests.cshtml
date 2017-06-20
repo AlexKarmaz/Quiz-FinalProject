@@ -20,10 +20,10 @@ else
             @Html.DisplayNameFor(model => model.Runtime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateComplete)
+            @Html.DisplayName("Date of passing")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsSuccess)
+            @Html.DisplayName("Success")
         </th>
         
         <th></th>
@@ -37,13 +37,16 @@ else
         </td>
         
         <td>
-            @Html.DisplayFor(modelItem => item.Runtime)
+            @item.Runtime.ToString(@"hh\:mm\:ss")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateComplete)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsSuccess)
+             @if (item.IsSuccess)
+             {<img src="~/Content/Img/success.png" width="40" height="40" /> }
+             else
+             {<img src="~/Content/Img/notsuccess.png" width="30" height="30" />}
         </td>
         
         <td>

@@ -8,10 +8,9 @@
 
     }
 </script>*@
-
+<div class="text-success title-test">@Model.Title</div>
 <div class="jumbotron">
-    <h1>@Model.Title</h1>
-    <p>To pass the test successfully you are to give @Model.MinToSuccess.ToString("0.00")% correct answers up to @Model.TimeLimit.ToString(@"hh\:mm\:ss").</p> 
+    <p>To pass the test successfully you are to give <a class="text-info" > @Model.MinToSuccess.ToString("0.00")% </a> correct answers up to <a class="text-info"> @Model.TimeLimit.ToString(@"hh\:mm\:ss") </a> .</p> 
     <p>Good luck:)</p>
     @Ajax.ActionLink("Back", "ShowLastTests", "Test", new AjaxOptions{UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"}, new { @class = "btn btn-default btn-lg" })
 

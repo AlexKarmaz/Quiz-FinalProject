@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h2>Test: @Model.Title</h2>
+        <h2 class="text-success">Test: @Model.Title</h2>
         <hr />
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.StartTest)
@@ -21,7 +21,7 @@
         {
             int k = i + 1;
             <div @*style="display:none"*@ id="question-@k">
-                <h3>Question @k</h3>
+                <h3 class="text-info">Question @k</h3>
                 <h3 >@Model.Questions[i].Text</h3>
                 <table class="table">
                     <tr>

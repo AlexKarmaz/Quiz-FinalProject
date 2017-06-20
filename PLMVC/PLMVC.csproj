@@ -207,7 +207,9 @@
     <Content Include="Content\httpErrors\error.png" />
     <Content Include="Content\httpErrors\pageNotFound.jpg" />
     <Content Include="Content\httpErrors\serverError.jpg" />
+    <Content Include="Content\Img\notsuccess.png" />
     <Content Include="Content\Img\Sorry-With-Pen-Writing.jpg" />
+    <Content Include="Content\Img\success.png" />
     <Content Include="Content\Img\Under-construction.png" />
     <Content Include="Content\Loading\1.gif" />
     <Content Include="Content\Loading\4.gif" />
