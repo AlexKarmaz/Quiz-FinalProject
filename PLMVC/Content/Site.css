@@ -81,6 +81,7 @@ textarea {
 
 .search{
     margin-top: 19px;
+    display: -webkit-box;
 }
 
 .start-test-link{
