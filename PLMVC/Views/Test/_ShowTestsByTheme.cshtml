@@ -2,6 +2,12 @@
 
 <h3>@ViewBag.ThemeName</h3>
 <hr />
+@if (Model.Count() == 0)
+{
+    <h3>There are no tests in this category.</h3>
+}
+else
+{
 <table class="table">
     <tr>
         <th>
@@ -13,7 +19,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -22,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "start-test-link"}) 
+            @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" }) 
            @if (User.IsInRole("admin"))
            {@:|
             @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
@@ -34,3 +41,4 @@
 }
 
 </table>
+}

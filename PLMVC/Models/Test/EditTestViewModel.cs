@@ -9,7 +9,7 @@ namespace PLMVC.Models.Test
     public class EditTestViewModel
     {
         [Required(ErrorMessage = "The field can not be empty!")]
-        [StringLength(15, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Title { get; set; }
         [Required(ErrorMessage = "The field can not be empty!")]
         [StringLength(250, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]

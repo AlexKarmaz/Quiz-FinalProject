@@ -28,7 +28,7 @@ namespace PLMVC.Providers
         {
             MembershipUser membershipUser = GetUser(name, false);
 
-            if (!ReferenceEquals(membershipUser, null))
+            if (membershipUser != null)
                 return null;
 
            var profile = new BllProfile() { PassedTests = new List<BllTest>(), CreatedTests = new List<BllTest>() };

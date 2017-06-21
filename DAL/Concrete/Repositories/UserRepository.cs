@@ -51,10 +51,10 @@ namespace DAL.Concrete.Repositories
             var profile = context.Set<Profile>().FirstOrDefault(p => p.Id == entity.ProfileId);
             var user = entity.ToOrmUser();
 
-            if (!ReferenceEquals(role, null))
+            if (role != null)
                 user.Roles.Add(role);
 
-            if (!ReferenceEquals(profile, null))
+            if (profile != null)
                 user.Profile = profile;
 
             context.Set<User>().Add(user);
@@ -84,14 +84,6 @@ namespace DAL.Concrete.Repositories
                 context.Entry(userToUpdate).State = System.Data.Entity.EntityState.Modified;
             }
         }
-
-        //public DalUser GetUserByEmail(string email)
-        //{
-        //    var user = context.Set<User>().Where(u => u.Email == email).FirstOrDefault();
-        //    if (user == null)
-        //        return null;
-        //    return user.ToDalUser();
-        //}
 
         public DalUser GetOneByPredicate(Expression<Func<DalUser, bool>> predicate)
         {

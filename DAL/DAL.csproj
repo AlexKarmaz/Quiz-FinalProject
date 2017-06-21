@@ -73,6 +73,10 @@
       <Project>{de269698-4a8e-419a-81a3-8ce2a261691a}</Project>
       <Name>DAL.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger.Interfaces\Logger.Interfaces.csproj">
+      <Project>{3BC5028D-FF52-403C-9822-7841AEAC1515}</Project>
+      <Name>Logger.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ORM\ORM.csproj">
       <Project>{198c21e0-66a8-4210-8156-546ea2cd0dba}</Project>
       <Name>ORM</Name>

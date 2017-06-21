@@ -123,15 +123,6 @@ namespace BLL.Services
         {
             List<DalTest> dalTests; 
             dalTests =  testRepository.GetAllByPredicate(t => t.Title.ToLower().Contains(searchString)|| t.Description.ToLower().Contains(searchString)).ToList();
-            //var dalTestsByDescription = testRepository.GetAllByPredicate(t => t.Description.ToLower().Contains(searchString)).ToList();
-         
-            //if (dalTests.Count() < dalTestsByDescription.Count())
-            //{
-            //    dalTests = dalTestsByDescription.Union(dalTests).ToList();
-            //}else
-            //{
-            //    dalTests.Union(dalTestsByDescription);
-            //}
             return dalTests.Select(t => t.ToBllTest());
         }
 

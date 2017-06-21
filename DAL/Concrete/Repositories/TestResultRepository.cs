@@ -53,20 +53,6 @@ namespace DAL.Concrete.Repositories
         public void Update(DalTestResult entity)
         {
             throw new NotImplementedException();
-            //if (entity != null)
-            //{
-            //    var testResultToUpdate = context.Set<TestResult>().FirstOrDefault(u => u.Id == entity.Id);
-            //    var ormTestResult = entity.ToOrmTestResult();
-            //    context.Set<TestResult>().Attach(testResultToUpdate);
-            //    testToUpdate.Title = ormTest.Title;
-            //    testToUpdate.Description = ormTest.Description;
-            //    testToUpdate.ThemeId = ormTest.ThemeId;
-            //    testToUpdate.TimeLimit = ormTest.TimeLimit;
-            //    testToUpdate.TestResults = ormTest.TestResults;
-            //    testToUpdate.Questions = ormTest.Questions;
-            //    testToUpdate.MinToSuccess = ormTest.MinToSuccess;
-            //    context.Entry(testToUpdate).State = System.Data.Entity.EntityState.Modified;
-            //}
         }
 
         public DalTestResult GetOneByPredicate(Expression<Func<DalTestResult, bool>> predicate)

@@ -7,6 +7,6 @@
     <p>Good luck:)</p>
     @Ajax.ActionLink("Back", "ShowLastTests", "Test", new AjaxOptions{UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"}, new { @class = "btn btn-default btn-lg" })
 
-    @Ajax.ActionLink("Start","PassingTest", "Test", new {testId = Model.Id},new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"@*, OnSuccess = "showFirstQuestion"*@ }, new {@class = "btn btn-success btn-lg" })
+    @Ajax.ActionLink("Start","PassingTest", "Test", new {testId = Model.Id},new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new {@class = "btn btn-success btn-lg" })
 </div>
 

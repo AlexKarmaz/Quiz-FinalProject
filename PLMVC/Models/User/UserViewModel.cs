@@ -13,6 +13,5 @@ namespace PLMVC.Models.User
         public string Password { get; set; }
         public string Email { get; set; }
         public int? ProfileId { get; set; }
-       // public ProfileViewModel Profile{ get; set;}
     }
 }

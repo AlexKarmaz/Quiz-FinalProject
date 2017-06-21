@@ -11,7 +11,7 @@ namespace Logger
 
         public NLoggerAdapter(NLog.Logger logger)
         {
-            if (ReferenceEquals(logger, null))
+            if (logger == null)
                 throw new ArgumentNullException($"{nameof(logger)} is null.");
 
             this.logger = logger;

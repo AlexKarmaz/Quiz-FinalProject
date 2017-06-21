@@ -316,6 +316,10 @@
       <Project>{07e5f4bf-bb7c-4802-878a-24e10e7f2c7e}</Project>
       <Name>DependencyResolver</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger.Interfaces\Logger.Interfaces.csproj">
+      <Project>{3BC5028D-FF52-403C-9822-7841AEAC1515}</Project>
+      <Name>Logger.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

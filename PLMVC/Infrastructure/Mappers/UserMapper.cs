@@ -20,7 +20,6 @@ namespace PLMVC.Infrastructure.Mappers
                 Email = bllUser.Email,
                 Password = bllUser.Password,
                 ProfileId = bllUser.ProfileId,
-               // Profile = bllUser.Profile.ToMvcProfile()
             };
         }
 

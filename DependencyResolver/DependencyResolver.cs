@@ -25,8 +25,7 @@ namespace DependencyResolver
 
             kernel.Bind<DbContext>().To<TestEntities>().InRequestScope();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-
-            kernel.Bind<ILogger>().To<NLoggerAdapter>();
+            kernel.Bind<ILogger>().To<NLoggerAdapter>().InSingletonScope();
 
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();

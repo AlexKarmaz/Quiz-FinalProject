@@ -30,9 +30,6 @@
                  @Ajax.ActionLink("Details", "DetailsOneQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"}) |
                  @Ajax.ActionLink("Delete", "DeleteTestQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "details_test_questions", Confirm = "Do you really want to delete this question?", HttpMethod = "GET" })
              </td>
-             @*<td>
-                 @Ajax.ActionLink("Delete", "DeleteTestQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "details_test_questions", Confirm = "Do you really want to delete this question?" , HttpMethod = "GET"})
-             </td>*@
          </tr>
         }
      </table>
