@@ -1,8 +1,5 @@
 ﻿@model PLMVC.Models.Test.PassingTestViewModel
 
-
-@Scripts.Render("~/Scripts/customJS.js")
-
 @using (Ajax.BeginForm("PassingTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "POST" }))
 {
     @Html.AntiForgeryToken()
@@ -15,12 +12,12 @@
         @Html.HiddenFor(model => model.FinishTest)
         @Html.HiddenFor(model => model.Questions)
        
-
+        <h2 id="clock" class="clock"><time>00:00:00</time></h2>
         @for (int i = 0; i < Model.Questions.Count; i++)
         {
             int k = i + 1;
             <div style="display:none" id="question-@k" class="question">
-                <h3 class="text-info">Question @k</h3>
+                <h3 class="text-info">Question @k/@Model.Questions.Count</h3>
                 <h3 >@Model.Questions[i].Text</h3>
                 <table class="table">
                     <tr>
@@ -41,7 +38,7 @@
                 </table>
             </div>
                         }
-
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input id="finshBtn" type="submit" value="Finish" class="btn btn-default" style="display:none"/>
@@ -51,6 +48,10 @@
                         }
 <button id="nextBtn" class="btn btn-default"> Next Question </button>
 
+@*<h2 id="h2"><time>00:00:00</time></h2> 
+<button id="start">START</button>
+<button id="stop">STOP</button>
+<button id="clear">RESET</button>*@
 
 <script>
     var currentNumber = 1;
@@ -69,6 +70,7 @@
 
         if (currentNumber === questionsCount) {
             $("#nextBtn").hide();
+            $("#exitBtn").hide();
             $("#finshBtn").show();
         }
     }
@@ -77,5 +79,43 @@
         currentNumber += 1;
         showQuestion();
     });
+
+    var h1 = document.getElementById('clock'),
+    //start = document.getElementById('start'),
+    //stop = document.getElementById('stop'),
+    //clear = document.getElementById('clear'),
+    finish = document.getElementById('finshBtn'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+    function add() {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+
+        h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+        timer();
+    }
+    function timer() {
+        t = setTimeout(add, 1000);
+    }
+    timer();
+
+
+    ///* Start button */
+    //start.onclick = timer;
+
+    /* Stop button */
+    finish.onclick = function () {
+        clearTimeout(t);
+        seconds = 0; minutes = 0; hours = 0;
+    }
 
 </script>

@@ -111,3 +111,9 @@ textarea {
 .create-theme{
     display: flex;
 }
+
+.clock{
+    float: right;
+    margin-right: 25px;
+    color: yellowgreen;
+}
