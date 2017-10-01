@@ -117,3 +117,12 @@ textarea {
     margin-right: 25px;
     color: yellowgreen;
 }
+
+.importBar{
+    display: flex;
+}
+
+.importBtn{
+    margin-left: auto;
+    margin-top: auto;
+}

@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<PLMVC.Models.TestResult.PassedTestResult>
 
-<h3>Passed tests</h3>
+<div class="importBar">
+    <h3>Passed tests</h3>
+    <div class="importBtn">@Ajax.ActionLink("Import to XML file", "ToXmlFile", "Test", new { userId = Model.FirstOrDefault().UserId}, new AjaxOptions {LoadingElementId = "loading", HttpMethod = "POST" }, new { @class = "btn btn-success btn-sm" })</div>
+</div>
 <hr />
 @if (Model.Count() == 0)
 {

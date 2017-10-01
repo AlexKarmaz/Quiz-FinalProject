@@ -11,6 +11,8 @@ using BLL.Interface.Entities;
 using System.Net;
 using System.Diagnostics;
 using PLMVC.Models.Theme;
+using PLMVC.Models.TestResult;
+using System.Xml.Linq;
 
 namespace PLMVC.Controllers
 {
@@ -337,5 +339,45 @@ namespace PLMVC.Controllers
             return RedirectToAction("CreateTest");
         }
 
+        [HttpPost]
+        public ActionResult ToXmlFile(int? userId)
+        {
+            if (userId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var testResults = testResultService.GetAllByPredicate(r => r.UserId == userId);
+            var mvcTestResults = testResults.Select(t => t.ToMvcPassedTestResult()).ToArray();
+            for (int i = 0; i < mvcTestResults.Length; i++)
+            {
+                mvcTestResults[i].Title = testService.GetById(mvcTestResults[i].TestId).Title;
+            }
+
+            List<PassedTestResult> tests = mvcTestResults.ToList();
+
+            XDocument document = new XDocument(
+               new XDeclaration("1.0", "utf-8", "yes"),
+               new XComment("It's your results")
+            );
+
+            XElement resultsElement = new XElement("Results");
+            foreach (var result in tests)
+            {
+                XElement newElement = new XElement("Result");
+                newElement.Add(new XAttribute("id", result.Id));
+                newElement.Add(new XElement("Title", result.Title));
+                newElement.Add(new XElement("TestId", result.TestId));
+                newElement.Add(new XElement("UserId", result.UserId));
+                newElement.Add(new XElement("Runtime", result.Runtime));
+                newElement.Add(new XElement("DateOfPassing", result.DateComplete));
+                newElement.Add(new XElement("Success", result.IsSuccess));
+
+                resultsElement.Add(newElement);
+            }
+
+            document.Add(resultsElement);
+            document.Save("F:\\Quiz-FinalProject\\Results.xml");
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
     }
 }
