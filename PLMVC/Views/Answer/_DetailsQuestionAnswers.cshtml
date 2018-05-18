@@ -2,11 +2,11 @@
 
 <div>
     <hr />
-    <h4> Details answers</h4>
+    <h4> @Resources.Resource.DetailsAnswers</h4>
     @if (Model.Count() == 0)
     {
         <div>
-            This question don't has an answers
+            @Resources.Resource.EmptyAnswers
         </div>
     }
     else
@@ -16,10 +16,10 @@
             <tr>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.Text)
+                    @Resources.Resource.Text
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsRight)
+                    @Resources.Resource.IsRight
                 </th>
                 <th>
                 </th>
@@ -34,14 +34,14 @@
                         @Html.DisplayFor(modelItem => item.IsRight)
                     </td>
                     <td>
-                        @Ajax.ActionLink("Edit", "EditQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_answer" }) |
-                        @Ajax.ActionLink("Delete", "DeleteQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "details_question_answers", Confirm = "Do you really want to delete this answer?", HttpMethod = "GET" })
+                        @Ajax.ActionLink(@Resources.Resource.Edit, "EditQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_answer" }) |
+                        @Ajax.ActionLink(@Resources.Resource.Delete, "DeleteQuestionAnswer", new { answerId = item.Id }, new AjaxOptions { UpdateTargetId = "details_question_answers", Confirm = "Do you really want to delete this answer?", HttpMethod = "GET" })
                     </td>
                 </tr>
             }
         </table>
     }
-    @Ajax.ActionLink("Add answer", "CreateQuestionAnswer", "Answer", new { questionId = @ViewBag.QuestionId }, new AjaxOptions { UpdateTargetId = "work_with_answer", HttpMethod = "GET" })
+    @Ajax.ActionLink(@Resources.Resource.AddAnswer, "CreateQuestionAnswer", "Answer", new { questionId = @ViewBag.QuestionId }, new AjaxOptions { UpdateTargetId = "work_with_answer", HttpMethod = "GET" })
     <div id="work_with_answer">
 
     </div>

@@ -30,8 +30,11 @@ namespace PLMVC.Filters
             {
                 cultureName = "ru";
             }
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
+            //Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
+            // Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
         }
     }
 }

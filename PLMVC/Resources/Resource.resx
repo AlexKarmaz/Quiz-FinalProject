@@ -117,16 +117,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddAnswer" xml:space="preserve">
+    <value>Добавить ответ</value>
+  </data>
+  <data name="AK" xml:space="preserve">
+    <value>Алексей Кармаз</value>
+  </data>
   <data name="Bsuir" xml:space="preserve">
     <value>Поступайте в БГУИР</value>
   </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Выберите язык</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="CreateTest" xml:space="preserve">
+    <value>Создать тест</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Создать пользователя</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Детали</value>
+  </data>
+  <data name="DetailsAnswers" xml:space="preserve">
+    <value>Детали ответов</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="EditAnswer" xml:space="preserve">
+    <value>Редактировать ответ</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="EmptyAnswers" xml:space="preserve">
+    <value>У этого теста нету ответов</value>
+  </data>
+  <data name="EmptySearch" xml:space="preserve">
+    <value>Поиск не привёл ни к каким результатам...</value>
+  </data>
+  <data name="EnterAnswer" xml:space="preserve">
+    <value>Введите ответ</value>
+  </data>
+  <data name="EnterEmail" xml:space="preserve">
+    <value>Введите электронную почту</value>
+  </data>
+  <data name="EnterLogin" xml:space="preserve">
+    <value>Введите логин</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Введит пароль</value>
+  </data>
   <data name="EpamPortal" xml:space="preserve">
     <value>ЕПАМ Тренинг портал</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="IsRight" xml:space="preserve">
+    <value>Является правильным</value>
+  </data>
   <data name="JoinUs" xml:space="preserve">
     <value>Присоединяйтесь к нам!</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход в систему</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>Управление пользователями</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Не найдена</value>
+  </data>
+  <data name="OneUser" xml:space="preserve">
+    <value>Только вы зарегестрированы на этом сайте...</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Страница не найдена. Попробуйте позже!</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить мои данные</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Ошибка в процессе вашего запроса</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск теста...</value>
+  </data>
+  <data name="SearchingResults" xml:space="preserve">
+    <value>Результаты поиска</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Ошибка сервера</value>
+  </data>
+  <data name="ServerErrorText" xml:space="preserve">
+    <value>Ошибка сервера. Попробуйте позже!</value>
+  </data>
+  <data name="ShowCreatedTests" xml:space="preserve">
+    <value>Показать созданные тесты</value>
+  </data>
+  <data name="ShowPassedTests" xml:space="preserve">
+    <value>Показать историю прохождения тестов</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Подтвердите имя пользователя и пароль</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="StartTest" xml:space="preserve">
+    <value>Начать тест</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value>Ваш профиль</value>
   </data>
 </root>

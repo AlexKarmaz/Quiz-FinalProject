@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PLMVC.Models.Test.ShowTestsViewModel>
 
-<h3 align="center">Searching results</h3>
+<h3 align="center">@Resources.Resource.SearchingResults</h3>
 <hr />
 
 @if (Model.Count() == 0)
 {
     <div align="center">
         <hgroup class="title">
-            <h3>The search hasn't given any results...</h3>
+            <h3>@Resources.Resource.EmptySearch</h3>
         </hgroup>
 
         <img src="~/Content/Img/Sorry-With-Pen-Writing.jpg" alt="Not found" width="600" height="400">
@@ -18,10 +18,10 @@ else
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Resources.Resource.Title
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Resources.Resource.Description
         </th>
         <th></th>
     </tr>
@@ -36,12 +36,12 @@ else
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Ajax.ActionLink("Start test", "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" })
+                @Ajax.ActionLink(@Resources.Resource.StartTest, "Preview", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "start-test-link" })
                @if (User.IsInRole("admin"))
                {@:|
-                @Ajax.ActionLink("Edit", "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
-                @Ajax.ActionLink("Details", "TestDetails", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
-                @Ajax.ActionLink("Delete", "DeleteTests", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this test?" });
+                @Ajax.ActionLink(@Resources.Resource.Edit, "EditTest", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
+                @Ajax.ActionLink(@Resources.Resource.Details, "TestDetails", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" }); @:|
+                @Ajax.ActionLink(@Resources.Resource.Delete, "DeleteTests", "Test", new { testId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this test?" });
                }
             </td>
         </tr>

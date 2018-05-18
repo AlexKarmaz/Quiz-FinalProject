@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = @Resources.Resource.Error;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div align="center">
     <hgroup class="title">
-        <h1>Error!</h1>
-        <h2>An error occurred while processing your request.</h2>
+        <h1>@Resources.Resource.Error!</h1>
+        <h2>@Resources.Resource.RequestError.</h2>
     </hgroup>
 
     <img src="~/Content/httpErrors/error.png" alt="Error" width="500" height="500">

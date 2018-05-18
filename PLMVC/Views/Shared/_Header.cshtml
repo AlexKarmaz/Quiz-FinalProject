@@ -13,10 +13,10 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <li class="navbar-create">
-                    @Ajax.ActionLink("Quiz", "ShowLastTests", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"})
+                    @Ajax.ActionLink(@Resources.Resource.Main, "ShowLastTests", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET"})
                 </li>
                 <li class="navbar-create">
-                    @Ajax.ActionLink("Create test","CreateTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
+                    @Ajax.ActionLink(@Resources.Resource.CreateTest, "CreateTest", "Test", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
                 </li>
             }
         </ul>
@@ -40,7 +40,7 @@
               {
                     <div class="search">
                         <p>
-                            <input type="search" name="searchString" placeholder="Test search...">
+                            <input type="search" name="searchString" placeholder="@Resources.Resource.Search">
                             <p class="glyphicon glyphicon-search search-sumbl"></p>
                         </p>
                     </div>
@@ -48,7 +48,7 @@
                 </li>
                 if (User.IsInRole("admin")) { 
                 <li class="navbar-create">
-                    @Ajax.ActionLink("Manage", "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
+                    @Ajax.ActionLink(@Resources.Resource.Manage, "GetAllUsers", "Account", new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading" })
                 </li>
                 }
            }

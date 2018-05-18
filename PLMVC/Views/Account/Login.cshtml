@@ -1,13 +1,13 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Login";
+    ViewBag.Title = @Resources.Resource.Login;
 }
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new Dictionary<string, object> { { "data-toggle", "validator" }, { "class", "col-md-8 col-sm-pull-2 col-md-offset-3" } }))
 {
 
-    <h3>Please, sign in</h3>
+    <h3>@Resources.Resource.SignIn</h3>
     <hr />
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true,"", new { @class = "text-danger" })
@@ -16,7 +16,7 @@
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-user"></i>
             </span>
-            @Html.TextBox("UserName", null, new { @class = "form-control", @placeholder = "Enter login" })
+            @Html.TextBox("UserName", null, new { @class = "form-control", @placeholder = @Resources.Resource.EnterLogin })
         </div>
         @Html.ValidationMessage("UserName", new { @class = "text-danger" })
     </div>
@@ -25,12 +25,12 @@
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                     </span>
-                    @Html.TextBox("Password", null, new { @class = "form-control", @placeholder = "Enter password", @type = "password" })
+                    @Html.TextBox("Password", null, new { @class = "form-control", @placeholder = @Resources.Resource.EnterPassword, @type = "password" })
                 </div>
                 @Html.ValidationMessage("Password", new { @class = "text-danger" })
             </div>
             @Html.CheckBox("Remember Me", true, new { @name = "RememberMe" })
-            @Html.Label("Remember Me", "Remember me")
-            <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+            @Html.Label("Remember Me", @Resources.Resource.RememberMe)
+            <button class="btn btn-lg btn-success btn-block" type="submit">@Resources.Resource.Login</button>
 }
 

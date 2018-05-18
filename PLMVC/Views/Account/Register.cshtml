@@ -2,7 +2,7 @@
 @model PLMVC.Models.User.RegisterViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Register";
+    ViewBag.Title = @Resources.Resource.Registration;
 }
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new Dictionary<string, object> { { "data-toggle", "validator" }, { "class", "col-md-8 col-sm-pull-2 col-md-offset-3" } }))
 {
@@ -10,33 +10,33 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
 
-    <h3>Registration</h3>
+    <h3>@Resources.Resource.Registration</h3>
                 <hr />
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.UserName)
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter login" })
+                    @Resources.Resource.UserName
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = @Resources.Resource.EnterLogin })
                     @Html.ValidationMessageFor(m => m.UserName,"", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.UserEmail)
-                    @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", @placeholder = "Enter Email" })
+                    @Resources.Resource.Email
+                    @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", @placeholder = @Resources.Resource.EnterEmail })
                     @Html.ValidationMessageFor(m => m.UserEmail,"", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.UserPassword)
-                    @Html.TextBoxFor(m => m.UserPassword, new { @class = "form-control", @placeholder = "Enter password", @type = "password" })
+                    @Resources.Resource.Password
+                    @Html.TextBoxFor(m => m.UserPassword, new { @class = "form-control", @placeholder = @Resources.Resource.EnterPassword, @type = "password" })
                     @Html.ValidationMessageFor(m => m.UserPassword, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.PasswordConfirm)
-                    @Html.TextBoxFor(m => m.PasswordConfirm, new { @class = "form-control", @placeholder = "Confirm password", @type = "password" })
+                    @Resources.Resource.ConfirmPassword
+                    @Html.TextBoxFor(m => m.PasswordConfirm, new { @class = "form-control", @placeholder = @Resources.Resource.ConfirmPassword, @type = "password" })
                     @Html.ValidationMessageFor(m => m.PasswordConfirm, "", new { @class = "text-danger" })
                 </div>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Sign Up</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">@Resources.Resource.SignUp</button>
 
 }
 

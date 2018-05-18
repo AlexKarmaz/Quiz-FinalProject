@@ -1,24 +1,24 @@
 ﻿@model IEnumerable<PLMVC.Models.User.ShowUsersViewModel>
-<h2>Manage users</h2>
+<h2>@Resources.Resource.ManageUsers</h2>
 <hr />
 <p>
-    @Ajax.ActionLink("Create user", "Register", "Account",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
+    @Ajax.ActionLink(@Resources.Resource.CreateUser, "Register", "Account",new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET" })
 </p>
 @if (Model.Count() == 0)
 {
-    <b>Only you are registered on this site...</b>
+    <b>@Resources.Resource.OneUser</b>
 }
 
 <table class="table">
     <tr>
         <th>
-            User name
+            @Resources.Resource.UserName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Resources.Resource.Email
         </th>
         <th>
-            Roles
+            @Resources.Resource.Roles
         </th>
         <th></th>
     </tr>
@@ -35,7 +35,7 @@
             @string.Join(",", item.RoleNames)
         </td>
         <td>
-            @Ajax.ActionLink("Delete", "DeleteUser","Account", new { userId = item.Id },new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this user?" })
+            @Ajax.ActionLink(@Resources.Resource.Delete, "DeleteUser","Account", new { userId = item.Id },new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this user?" })
         </td>
     </tr>
 }

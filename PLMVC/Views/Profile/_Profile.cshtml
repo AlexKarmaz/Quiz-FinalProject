@@ -1,11 +1,11 @@
 ﻿@model PLMVC.Models.Profile.ProfileViewModel
 
 <div >
-    <h2>Your profile</h2>
+    <h2>@Resources.Resource.YourProfile</h2>
     <hr />
     <dl class="dl-horizontal profile-text">
         <dt>
-            @Html.DisplayName("Name")
+           @Resources.Resource.Name
         </dt>
 
         <dd>
@@ -13,15 +13,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Resources.Resource.Email
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-    @Ajax.ActionLink("Show created tests", "ShowCreateTests", "Test", new { profileId = Model.Id },new AjaxOptions {UpdateTargetId = "tests-table",LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
-    @Ajax.ActionLink("Show passed tests", "ShowPassedTests", "Test", new { profileId = Model.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink(@Resources.Resource.ShowCreatedTests, "ShowCreateTests", "Test", new { profileId = Model.Id },new AjaxOptions {UpdateTargetId = "tests-table",LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink(@Resources.Resource.ShowPassedTests, "ShowPassedTests", "Test", new { profileId = Model.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
 </div>
 <div id="tests-table">
 
