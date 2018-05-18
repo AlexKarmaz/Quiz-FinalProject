@@ -21,6 +21,18 @@
             }
         </ul>
         <ul class="nav navbar-nav navbar-right text-center">
+            <li>
+                @using (Html.BeginForm("ChangeCulture", "Home"))
+                {
+                    <select name="lang">
+                        <option disabled selected>@Resources.Resource.ChooseLang</option>
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                    <input class="but " type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                }
+            </li>
+
            @if (User.Identity.IsAuthenticated)
            {
                 <li>
