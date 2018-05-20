@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<PLMVC.Models.Question.QuestionViewModel>
 
 <div>
-    <h4> Details questions</h4>
+    <h4>@Resources.Resource.QuestionList</h4>
     @if (Model.Count() == 0)
     {
      <div>
-         This test don't has a questions
+         @Resources.Resource.EmptyQuestionsList
      </div>
     }
     else
@@ -15,7 +15,7 @@
         <tr>
 
             <th>
-                @Html.DisplayNameFor(model => model.Text)
+                @Resources.Resource.Text
             </th>
             <th>
             </th>
@@ -27,15 +27,15 @@
                 @Html.DisplayFor(modelItem => item.Text)
              </td>
              <td>
-                 @Ajax.ActionLink("Details", "DetailsOneQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"}) |
-                 @Ajax.ActionLink("Delete", "DeleteTestQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "details_test_questions", Confirm = "Do you really want to delete this question?", HttpMethod = "GET" })
+                 @Ajax.ActionLink(@Resources.Resource.Details, "DetailsOneQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "work_with_question"}) |
+                 @Ajax.ActionLink(@Resources.Resource.Delete, "DeleteTestQuestion", new { questionId = item.Id }, new AjaxOptions { UpdateTargetId = "details_test_questions", Confirm = "Do you really want to delete this question?", HttpMethod = "GET" })
              </td>
          </tr>
         }
      </table>
     }
     
-    @Ajax.ActionLink("Add question", "CreateTestQuestion", "Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "GET" })
+    @Ajax.ActionLink(@Resources.Resource.AddQuestion, "CreateTestQuestion", "Question", new { testId = @ViewBag.testId }, new AjaxOptions { UpdateTargetId = "work_with_question", HttpMethod = "GET" })
 <div id="work_with_question">
 
 </div>

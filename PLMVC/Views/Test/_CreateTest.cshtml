@@ -1,7 +1,7 @@
 ﻿@model PLMVC.Models.Test.CreateTestViewModel
 
 @{
-    ViewBag.Title = "CreateTest";
+    ViewBag.Title = @Resources.Resource.CreateTest;
    
 }
 
@@ -13,12 +13,14 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Create Test</h4>
+        <h4>@Resources.Resource.CreateTest</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                @Resources.Resource.Title
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
@@ -26,7 +28,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                @Resources.Resource.Description
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
@@ -34,7 +38,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TimeLimit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                @Resources.Resource.TimeLimit
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TimeLimit, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TimeLimit, "", new { @class = "text-danger", @placeholder = "Enter in format HH:MM:SS" })
@@ -42,7 +48,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MinToSuccess, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                @Resources.Resource.MinToSuccess
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MinToSuccess, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MinToSuccess, "", new { @class = "text-danger" })
@@ -51,6 +59,9 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ThemeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                @Resources.Resource.Text
+            </label>
             <div class="col-md-10">
                 @Html.DropDownListFor(x => x.ThemeId, ViewBag.Themes as SelectList, htmlAttributes: new { @class = "dropdown-input" })
                 @Ajax.ActionLink("Add new category", "CreateTheme", "Test", new AjaxOptions { UpdateTargetId = "work-with-theme", LoadingElementId = "loading", HttpMethod = "GET" })
@@ -59,7 +70,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value=@Resources.Resource.Create class="btn btn-default" />
             </div>
         </div>
     </div>

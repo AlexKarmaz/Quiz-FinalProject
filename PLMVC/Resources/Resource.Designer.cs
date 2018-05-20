@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавить вопрос.
+        /// </summary>
+        public static string AddQuestion {
+            get {
+                return ResourceManager.GetString("AddQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Алексей Кармаз.
         /// </summary>
         public static string AK {
@@ -187,6 +196,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Редактировать вопрос.
+        /// </summary>
+        public static string EditQuestion {
+            get {
+                return ResourceManager.GetString("EditQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Почта.
         /// </summary>
         public static string Email {
@@ -201,6 +219,15 @@ namespace Resources {
         public static string EmptyAnswers {
             get {
                 return ResourceManager.GetString("EmptyAnswers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to У этого теста нету вопросов.
+        /// </summary>
+        public static string EmptyQuestionsList {
+            get {
+                return ResourceManager.GetString("EmptyQuestionsList", resourceCulture);
             }
         }
         
@@ -246,6 +273,15 @@ namespace Resources {
         public static string EnterPassword {
             get {
                 return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите вопрос.
+        /// </summary>
+        public static string EnterQuestion {
+            get {
+                return ResourceManager.GetString("EnterQuestion", resourceCulture);
             }
         }
         
@@ -331,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Мин % пройденных тестов.
+        /// </summary>
+        public static string MinToSuccess {
+            get {
+                return ResourceManager.GetString("MinToSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Имя.
         /// </summary>
         public static string Name {
@@ -381,6 +426,24 @@ namespace Resources {
         public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Детали вопроса.
+        /// </summary>
+        public static string QuestionDetails {
+            get {
+                return ResourceManager.GetString("QuestionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Список вопросов.
+        /// </summary>
+        public static string QuestionList {
+            get {
+                return ResourceManager.GetString("QuestionList", resourceCulture);
             }
         }
         
@@ -466,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Показать ответы.
+        /// </summary>
+        public static string ShowAnswers {
+            get {
+                return ResourceManager.GetString("ShowAnswers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Показать созданные тесты.
         /// </summary>
         public static string ShowCreatedTests {
@@ -516,6 +588,15 @@ namespace Resources {
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Лимит времени.
+        /// </summary>
+        public static string TimeLimit {
+            get {
+                return ResourceManager.GetString("TimeLimit", resourceCulture);
             }
         }
         

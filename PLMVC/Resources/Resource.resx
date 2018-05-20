@@ -279,4 +279,31 @@
   <data name="YourProfile" xml:space="preserve">
     <value>Ваш профиль</value>
   </data>
+  <data name="AddQuestion" xml:space="preserve">
+    <value>Добавить вопрос</value>
+  </data>
+  <data name="EditQuestion" xml:space="preserve">
+    <value>Редактировать вопрос</value>
+  </data>
+  <data name="EmptyQuestionsList" xml:space="preserve">
+    <value>У этого теста нету вопросов</value>
+  </data>
+  <data name="EnterQuestion" xml:space="preserve">
+    <value>Введите вопрос</value>
+  </data>
+  <data name="MinToSuccess" xml:space="preserve">
+    <value>Мин % пройденных тестов</value>
+  </data>
+  <data name="QuestionDetails" xml:space="preserve">
+    <value>Детали вопроса</value>
+  </data>
+  <data name="QuestionList" xml:space="preserve">
+    <value>Список вопросов</value>
+  </data>
+  <data name="ShowAnswers" xml:space="preserve">
+    <value>Показать ответы</value>
+  </data>
+  <data name="TimeLimit" xml:space="preserve">
+    <value>Лимит времени</value>
+  </data>
 </root>

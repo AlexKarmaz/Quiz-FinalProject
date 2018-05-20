@@ -279,4 +279,31 @@
   <data name="YourProfile" xml:space="preserve">
     <value>Your profile</value>
   </data>
+  <data name="AddQuestion" xml:space="preserve">
+    <value>Add question</value>
+  </data>
+  <data name="EditQuestion" xml:space="preserve">
+    <value>Edit question</value>
+  </data>
+  <data name="EmptyQuestionsList" xml:space="preserve">
+    <value>This test don't has a questions</value>
+  </data>
+  <data name="EnterQuestion" xml:space="preserve">
+    <value>Enter question</value>
+  </data>
+  <data name="MinToSuccess" xml:space="preserve">
+    <value>Min % of correct answers</value>
+  </data>
+  <data name="QuestionDetails" xml:space="preserve">
+    <value>Question details</value>
+  </data>
+  <data name="QuestionList" xml:space="preserve">
+    <value>Questions list</value>
+  </data>
+  <data name="ShowAnswers" xml:space="preserve">
+    <value>Show answers</value>
+  </data>
+  <data name="TimeLimit" xml:space="preserve">
+    <value>Time limit</value>
+  </data>
 </root>
