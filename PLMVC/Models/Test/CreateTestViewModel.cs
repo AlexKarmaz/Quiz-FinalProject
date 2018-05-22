@@ -9,7 +9,7 @@ namespace PLMVC.Models.Test
 {
     public class CreateTestViewModel
     {
-        [Required(ErrorMessage = "The field can not be empty!")]
+        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "EmptyField")]
         [StringLength(40, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Title { get; set; }
         [Required(ErrorMessage = "The field can not be empty!")]

@@ -306,4 +306,10 @@
   <data name="TimeLimit" xml:space="preserve">
     <value>Лимит времени</value>
   </data>
+  <data name="EmptyField" xml:space="preserve">
+    <value>Это поле не может быть пустым!</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
 </root>

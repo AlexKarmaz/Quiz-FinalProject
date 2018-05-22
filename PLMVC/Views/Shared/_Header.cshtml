@@ -21,15 +21,15 @@
             }
         </ul>
         <ul class="nav navbar-nav navbar-right text-center">
-            <li>
+            <li class="search" style="margin-right: 15px">
                 @using (Html.BeginForm("ChangeCulture", "Home"))
                 {
-                    <select name="lang">
+                    <select name="lang" style="color: black">
                         <option disabled selected>@Resources.Resource.ChooseLang</option>
                         <option value="ru">Русский</option>
                         <option value="en">English</option>
                     </select>
-                    <input class="but " type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                    <input class="btn-primary " type="submit" name="submit" value="@Resources.Resource.ChooseLang">
                 }
             </li>
 
