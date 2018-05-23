@@ -37,6 +37,9 @@
         <td>
             @Ajax.ActionLink(@Resources.Resource.Delete, "DeleteUser","Account", new { userId = item.Id },new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this user?" })
         </td>
+        <td>
+            @Ajax.ActionLink(@Resources.Resource.Edit, "DeleteUser", "Account", new { userId = item.Id }, new AjaxOptions { UpdateTargetId = "main_container", LoadingElementId = "loading", HttpMethod = "GET", Confirm = "Do you really want to delete this user?" })
+        </td>
     </tr>
 }
 

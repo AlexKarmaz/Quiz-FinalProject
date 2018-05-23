@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Создать опрос.
+        /// </summary>
+        public static string CreateQuiz {
+            get {
+                return ResourceManager.GetString("CreateQuiz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Создать тест.
         /// </summary>
         public static string CreateTest {
@@ -556,11 +565,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Показать пройденые опросы.
+        /// </summary>
+        public static string ShowCreatedQuizes {
+            get {
+                return ResourceManager.GetString("ShowCreatedQuizes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Показать созданные тесты.
         /// </summary>
         public static string ShowCreatedTests {
             get {
                 return ResourceManager.GetString("ShowCreatedTests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Показать пройденные опросы.
+        /// </summary>
+        public static string ShowPassedQuizes {
+            get {
+                return ResourceManager.GetString("ShowPassedQuizes", resourceCulture);
             }
         }
         

@@ -309,7 +309,16 @@
   <data name="EmptyField" xml:space="preserve">
     <value>Это поле не может быть пустым!</value>
   </data>
+  <data name="CreateQuiz" xml:space="preserve">
+    <value>Создать опрос</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="ShowCreatedQuizes" xml:space="preserve">
+    <value>Показать пройденые опросы</value>
+  </data>
+  <data name="ShowPassedQuizes" xml:space="preserve">
+    <value>Показать пройденные опросы</value>
   </data>
 </root>

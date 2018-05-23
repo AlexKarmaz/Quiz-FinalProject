@@ -22,6 +22,8 @@
     </dl>
     @Ajax.ActionLink(@Resources.Resource.ShowCreatedTests, "ShowCreateTests", "Test", new { profileId = Model.Id },new AjaxOptions {UpdateTargetId = "tests-table",LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
     @Ajax.ActionLink(@Resources.Resource.ShowPassedTests, "ShowPassedTests", "Test", new { profileId = Model.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink(@Resources.Resource.ShowCreatedQuizes, "ShowCreateTests", "Test", new { profileId = Model.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
+    @Ajax.ActionLink(@Resources.Resource.ShowPassedQuizes, "ShowPassedTests", "Test", new { profileId = Model.Id }, new AjaxOptions { UpdateTargetId = "tests-table", LoadingElementId = "loading", HttpMethod = "GET" }, new { @class = "btn btn-primary" })
 </div>
 <div id="tests-table">
 

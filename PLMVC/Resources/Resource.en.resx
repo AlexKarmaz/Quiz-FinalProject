@@ -309,7 +309,16 @@
   <data name="EmptyField" xml:space="preserve">
     <value>The field can not be empty!</value>
   </data>
+  <data name="CreateQuiz" xml:space="preserve">
+    <value>Create survey</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="ShowCreatedQuizes" xml:space="preserve">
+    <value>Show created surveys</value>
+  </data>
+  <data name="ShowPassedQuizes" xml:space="preserve">
+    <value>Show passed surveys</value>
   </data>
 </root>
