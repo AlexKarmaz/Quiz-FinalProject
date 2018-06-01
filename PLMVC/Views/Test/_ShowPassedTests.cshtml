@@ -3,8 +3,8 @@
 <div class="importBar"style="justify-content: space-between">
     <h3>Passed tests</h3>
     <div style="display: flex">
-        <div class="importBtn" style="margin-right: 10px">@Ajax.ActionLink("Import to XML file", "ToXmlFile", "Test", new { userId = Model.FirstOrDefault().UserId }, new AjaxOptions { LoadingElementId = "loading", HttpMethod = "POST" }, new { @class = "btn btn-success btn-sm" })</div>
-        <div class="importBtn"><a class="btn btn-success btn-sm">Import to Excel file</a></div>
+        <div class="importBtn" style="margin-right: 10px">@Ajax.ActionLink("Export to XML file", "ToXmlFile", "Test", new { userId = Model.FirstOrDefault().UserId }, new AjaxOptions { LoadingElementId = "loading", HttpMethod = "POST" }, new { @class = "btn btn-success btn-sm" })</div>
+        <div class="importBtn"><a class="btn btn-success btn-sm">Export to Excel file</a></div>
     </div>
 </div>
 <hr />
